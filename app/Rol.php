@@ -17,21 +17,12 @@ class Rol extends Model
 
     protected $table='rol';
     protected $primaryKey='idRol';
-    protected $timestamps=false;
+    public $timestamps = false;
+   // protected $guarded = array();
 
     protected $fillable = [
-        'idRol','descripcion','idActividades'
+        'descripcion'
     ];
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-    ];
+    
 
-    public function user()
-    {
-        return $this->hasMany('App\user');
-    }
 }

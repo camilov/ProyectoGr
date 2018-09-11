@@ -17,7 +17,7 @@ class Responsabilidad extends Model
     protected $timestamps=false;
 
     protected $fillable = [
-        'idResponsabilidad','descripcion'
+        'idResponsabilidad','descripcion','idRol'
     ];
 
     /**

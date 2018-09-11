@@ -1,12 +1,12 @@
 @extends('admin.template.main')
 
 
-@section('title','Creacion de  Actividad')
+@section('title','Creacion de  Rol')
 
 
 @section('content')
 
-	{!! Form::open(['route'=>'actividad.store','method'=>'POST']) !!}
+	{!! Form::open(['route'=>'rol.store','method'=>'POST']) !!}
         
          
           <div class="form-group">

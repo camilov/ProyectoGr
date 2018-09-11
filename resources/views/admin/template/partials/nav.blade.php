@@ -13,7 +13,7 @@
                     <a href="#"  class="main_menu_first">Administrador</a>
                     <ul>
                         <li class="second_list second_list_border"><a href="#" class="main_menu_second">Usuarios</a></li>
-                        <li class="second_list second_list_border"><a href="#" class="main_menu_second">Roles</a></li>
+                        <li class="second_list second_list_border"><a href="{{route('rol.index')}}" class="main_menu_second">Roles</a></li>
                         <li class="second_list second_list_border"><a href="{{route('actividad.index')}}" class="main_menu_second">Actividades</a></li>
                         <li class="second_list second_list_border"><a href="#" class="main_menu_second">Responsabilidades</a></li>
                     </ul>

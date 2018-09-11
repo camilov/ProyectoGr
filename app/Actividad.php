@@ -17,7 +17,7 @@ class Actividad extends Model
    // protected $timestamps=false;
 
     protected $fillable = [
-        'idActividad','descripcion'
+        'idActividad','descripcion','idRol'
     ];
 
     /**
