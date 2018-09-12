@@ -651,7 +651,7 @@ a#pagination_next:hover, a#pagination_end:hover {
     background: #e8ebf1;
     border-top: 1px solid #d9d9d9;
     clear: both;
-    height: 320px;
+    height: 100px;
     margin-top: 40px;
 }
 

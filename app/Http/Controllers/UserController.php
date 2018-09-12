@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use App\Rol;
 
 class UserController extends Controller
 {
@@ -13,7 +15,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        $user = User::orderBy('idUsuario','ASC')->paginate(5);
+        return view('admin.user.index')->with('user',$user);
     }
 
     /**
@@ -23,7 +26,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        $rol = Rol::select('descripcion','idRol')->pluck('descripcion','idRol');
+        return view('admin.user.create')->with('rol',$rol);
     }
 
     /**
@@ -34,7 +38,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = new User($request->all());
+        $user->password=bcrypt($request->password);
+        $user->save();
+        return redirect()->route('user.index');
     }
 
     /**

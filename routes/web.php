@@ -15,8 +15,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/*Route::resource([
+	'actividad'=>'ActividadController',
+	'responsabilidad'=>'ResponsabilidadController',
+	'rol'=>'RolController',
+	'user'=>'UserController',
+]);*/
 Route::resource('actividad','ActividadController');
 
 Route::resource('responsabilidad','ResponsabilidadController');
 
 Route::resource('rol','RolController');
+
+Route::resource('user','UserController');

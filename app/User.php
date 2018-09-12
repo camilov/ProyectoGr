@@ -18,7 +18,7 @@ class User extends Authenticatable
 
     protected $table='usuario';
     protected $primaryKey='idUsuario';
-    protected $timestamps=false;
+    public $timestamps=false;
 
     protected $fillable = [
         'nombre','apellido','edad','name', 'telefono','idRol','email', 'password'
@@ -30,7 +30,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'remember_token'
     ];
 
     public function Rol()
