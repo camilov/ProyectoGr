@@ -15,13 +15,13 @@
                         <li class="second_list second_list_border"><a href="{{route('user.index')}}" class="main_menu_second">Usuarios</a></li>
                         <li class="second_list second_list_border"><a href="{{route('rol.index')}}" class="main_menu_second">Roles</a></li>
                         <li class="second_list second_list_border"><a href="{{route('actividad.index')}}" class="main_menu_second">Actividades</a></li>
-                        <li class="second_list second_list_border"><a href="#" class="main_menu_second">Responsabilidades</a></li>
+                        <li class="second_list second_list_border"><a href="{{route('responsabilidad.index')}}" class="main_menu_second">Responsabilidades</a></li>
                     </ul>
                 </li>
                 <li class="first_list with_dropdown">
                     <a href="portfolio.html" class="main_menu_first">Inventario</a>
                     <ul>
-                        <li class="second_list second_list_border"><a href="#" class="main_menu_second">Activos</a></li>
+                        <li class="second_list second_list_border"><a href="{{route('activo.index')}}" class="main_menu_second">Activos</a></li>
                     </ul>
                 </li>
                 <!--<li class="first_list"><a href="#" class="main_menu_first">blog</a></li>

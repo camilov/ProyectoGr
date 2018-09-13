@@ -14,17 +14,16 @@ class Activo extends Model
 
     protected $table='activo';
     protected $primaryKey='idActivo';
-    protected $timestamps=false;
+    public $timestamps=false;
 
     protected $fillable = [
-        'idActivo','nombre','codigo','responsable','tipoActivo','fechaAlta'
+        'nombre','codigo','responsable','tipoActivo','idUsuario','imagen'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-    ];
+
+
+    public function User()
+    {
+        return $this->belongsTo('App\User','idUsuario');
+    }
 }

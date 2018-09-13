@@ -20,10 +20,9 @@ class Actividad extends Model
         'idActividad','descripcion','idRol'
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
+    public function Rol()
+    {
+        return $this->belongsTo('App\Rol','idRol');
+    }
     
 }

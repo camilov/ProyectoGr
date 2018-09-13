@@ -14,17 +14,15 @@ class Responsabilidad extends Model
 
     protected $table='responsabilidad';
     protected $primaryKey='idResponsabilidad';
-    protected $timestamps=false;
+    //protected $timestamps=false;
 
     protected $fillable = [
         'idResponsabilidad','descripcion','idRol'
     ];
+    
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
-    protected $hidden = [
-    ];
+    public function Rol()
+    {
+        return $this->belongsTo('App\Rol','idRol');
+    }
 }

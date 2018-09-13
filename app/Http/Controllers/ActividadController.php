@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Actividad;
+use App\Rol;
 use Illuminate\Http\Request;
 
 class ActividadController extends Controller
@@ -24,8 +25,9 @@ class ActividadController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.actividad.create');
+    {   
+        $rol = Rol::select('descripcion','idRol')->pluck('descripcion','idRol');
+        return view('admin.actividad.create')->with('rol',$rol);
     }
 
     /**

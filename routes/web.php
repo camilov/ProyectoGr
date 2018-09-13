@@ -28,3 +28,5 @@ Route::resource('responsabilidad','ResponsabilidadController');
 Route::resource('rol','RolController');
 
 Route::resource('user','UserController');
+
+Route::resource('activo','ActivoController');

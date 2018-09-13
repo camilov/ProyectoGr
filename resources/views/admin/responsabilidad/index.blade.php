@@ -1,7 +1,7 @@
 @extends('admin.template.main')
 
 
-@section('title','Lista de Actividades')
+@section('title','Lista de Responsabilidades')
 
 
 @section('content')
@@ -14,7 +14,7 @@
     	@endforeach
 	</ul>
 
-	<a href="{{route('actividad.create')}}" class="btn btn-info">Registrar nueva actividad</a><hr>
+	<a href="{{route('responsabilidad.create')}}" class="btn btn-info">Registrar nueva responsabilidad</a><hr>
     <table class="table table-striped">
         <thead>
             <th scope="col">#</th>
@@ -22,17 +22,17 @@
             <th scope="col">Rol</th>
         </thead>
         <tbody>
-            @foreach($actividad as $actividades)
+            @foreach($responsabilidad as $responsabilidades)
                 <tr>
                     <th scope="row">1</th>
-                    <td>{{$actividades->idActivdad}}</td>
-                    <td>{{$actividades->descripcion}}</td>
-                    <td>{{$actividades->rol->descripcion}}</td>
+                    <td>{{$responsabilidades->idActivdad}}</td>
+                    <td>{{$responsabilidades->descripcion}}</td>
+                    <td>{{$responsabilidades->rol->descripcion}}</td>
                 </tr>
                 @endforeach
         </tbody>
     </table>
-    {!!$actividad->render()!!}
+    {!!$responsabilidad->render()!!}
 
 
 @endsection

@@ -28,4 +28,14 @@ class Rol extends Model
 
         return $this->hasMany('App\User');
     }
+
+    public function Actividad(){
+
+        return $this->hasMany('App\Actividad');
+    }
+
+    public function Responsabilidad(){
+
+        return $this->hasMany('App\Responsabilidad');
+    }
 }

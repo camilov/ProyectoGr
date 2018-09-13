@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Responsabilidad;
-use App\Rol;
 
+use App\Activo;
+use App\User;
 
-class ResponsabilidadController extends Controller
+class ActivoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,9 @@ class ResponsabilidadController extends Controller
      */
     public function index()
     {
-        $responsabilidad = Responsabilidad::orderBy('idResponsabilidad','ASC')->paginate(5);
+        $activo = Activo::orderBy('idActivo','ASC')->paginate(5);
 
-        return view('admin.responsabilidad.index')->with('responsabilidad',$responsabilidad);
+        return view('activo.index')->with('activo',$activo); 
     }
 
     /**
@@ -28,8 +28,9 @@ class ResponsabilidadController extends Controller
      */
     public function create()
     {
-        $rol = Rol::select('descripcion','idRol')->pluck('descripcion','idRol');
-        return view('admin.responsabilidad.create')->with('rol',$rol);
+        $user = User::select('name','idUsuario')->pluck('name','idUsuario');
+
+        return view('activo.create')->with('user',$user);
     }
 
     /**
@@ -40,9 +41,13 @@ class ResponsabilidadController extends Controller
      */
     public function store(Request $request)
     {
-        $responsabilidad = new Responsabilidad($request->all());
-        $responsabilidad->save();
-        return redirect()->route('responsabilidad.index');
+       /* if($request->hasFile('imagen')){
+            $file = $request->file('imagen');
+        }*/
+        $activo = new Activo($request->all());
+        $activo->save();
+
+        return redirect()->route('activo.index');
     }
 
     /**
