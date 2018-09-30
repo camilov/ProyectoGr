@@ -17,7 +17,6 @@
 	<a href="{{route('riesgo.create')}}" class="btn btn-info">Registrar nuevo Riesgo</a><hr>
     <table class="table table-striped">
         <thead>
-            <th scope="col">#</th>
             <th scope="col">Activo</th>
             <th scope="col">Tipo de riesgo</th>
             <th scope="col">Proceso</th>
@@ -31,11 +30,10 @@
         <tbody>
             @foreach($riesgo as $riesgos)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>{{$riesgos->idRiesgo}}</td>
                     <td>{{$riesgos->activo->nombre}}</td>
                     <td>{{$riesgos->tipoRiesgo}}</td>
                     <td>{{$riesgos->proceso}}</td>
+                    <td>{{$riesgos->nombre}}</td>
                     <td>{{$riesgos->descripcion}}</td>
                     <td>{{$riesgos->causa}}</td>
                     <td>{{$riesgos->efecto}}</td>

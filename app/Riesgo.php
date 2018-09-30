@@ -14,7 +14,7 @@ class Riesgo extends Model
 
     protected $table='riesgo';
     protected $primaryKey='idRiesgo';
-   // protected $timestamps=false;
+    public $timestamps=false;
 
     protected $fillable = [
         'tipoRiesgo','proceso','nombre','descripcion','causa','efecto','fuente','propietario','idActivo'

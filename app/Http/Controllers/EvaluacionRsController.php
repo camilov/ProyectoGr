@@ -3,24 +3,28 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\AnalisisRs;
-use App\Riesgo;
-use App\Impacto;
-use App\Probabilidad;
+
+use app\AnalisisRs;
+use app\Riesgo;
+use DB;
 
 
-class AnalisisRs extends Controller
+class EvaluacionRsController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\Responses
      */
     public function index()
     {
-        $analisisRs = AnalisisRs::orderBy('idAnalisisRs','ASC')->paginate(5);
-
-        return view('analisisRs.index')->with('analisisRs',$analisisRs);
+    	$riesgo = DB::table('analisis_rs')
+    	              ->join('riesgo','riesgo.idRiesgo', '=','analisis_rs.idRiesgo')
+                      ->join('impacto','analisis_rs.idImpacto','=','impacto.idImpacto')
+                      ->join('probabilidad','analisis_rs.idProbabilidad','=','probabilidad.idProbabilidad')
+    	              ->select('riesgo.idActivo','riesgo.nombre','riesgo.descripcion as riesgoDes','probabilidad.descripcion as probabilidadDes','impacto.descripcion as impactoDes','analisis_rs.idImpacto','analisis_rs.idProbabilidad')
+    	              ->get();
+    	return view('evaluacionRs.index')->with('riesgo',$riesgo);
     }
 
     /**
@@ -30,11 +34,7 @@ class AnalisisRs extends Controller
      */
     public function create()
     {
-        $riesgo = Riesgo::select('nombre','idRiesgo')->pluck('nombre','idRiesgo');
-        $impacto = Impacto::select('descripcion','idImpacto')->pluck('descripcion','idImpacto');
-        $probabilidad = Probabilidad::select('descripcion','idProbabilidad')->pluck('descripcion','idProbabilidad');
-        return view('analisisRs.create')->with('activo',$activo)->with('impacto',$impacto)
-                   ->with('probabilidad',$probabilidad);
+        
     }
 
     /**
@@ -45,10 +45,7 @@ class AnalisisRs extends Controller
      */
     public function store(Request $request)
     {
-        $analisisRs = new AnalisisRs($request->all());
-        $analisisRs->save();
-
-        return redirect()->route('analisisRs.index');
+        
     }
 
     /**

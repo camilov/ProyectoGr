@@ -30,7 +30,7 @@
                     <ul>
                         <li class="second_list second_list_border"><a href="{{route('riesgo.index')}}" class="main_menu_second">Identificacion del riesgo</a></li>
                         <li class="second_list second_list_border"><a href="{{route('analisisRs.index')}}" class="main_menu_second">Analisis del riesgo</a></li>
-                        
+                        <li class="second_list second_list_border"><a href="{{route('evaluacionRs.index')}}" class="main_menu_second">Evaluacion del riesgo</a></li>
                     </ul>
                 </li>
 

@@ -11,6 +11,7 @@ class AnalisisRs extends Model
 
     protected $table='analisis_rs';
     protected $primaryKey='idAnalisisRs';
+    public $timestamps = false;
 
     protected $fillable = [
         'idRiesgo','idImpacto','idProbabilidad'

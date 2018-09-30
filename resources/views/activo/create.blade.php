@@ -30,8 +30,8 @@
           </div>
           
           <div class="form-group">
-            {!! Form::label('usuario','Usuario') !!}
-            {!! Form::select('usuario',$user,null,['class'=>'form-control','placeholder'=>'Seleccione usuario','required','style' => 'width:350px']) !!}
+            {!! Form::label('idUsuario','Usuario') !!}
+            {!! Form::select('idUsuario',$user,null,['class'=>'form-control','placeholder'=>'Seleccione usuario','required','style' => 'width:350px']) !!}
           </div>
          
           <div class="form-group">

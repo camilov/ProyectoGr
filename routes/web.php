@@ -34,3 +34,7 @@ Route::resource('activo','ActivoController');
 Route::resource('riesgo','RiesgoController');
 
 Route::resource('analisisRs','AnalisisRsController');
+
+Route::resource('evaluacionRs','EvaluacionRsController');
+
+
