@@ -14,10 +14,9 @@ class Impacto extends Model
 
     protected $table='impacto';
     protected $primaryKey='idImpacto';
-    protected $timestamps=false;
 
     protected $fillable = [
-        'idImpacto','descripcion','numero'
+        'idImpacto','descripcion'
     ];
 
     /**
@@ -27,4 +26,10 @@ class Impacto extends Model
      */
     protected $hidden = [
     ];
+
+    public function Analisis(){
+
+        return $this->hasMany('App\AnalisisRs');
+    }
+
 }

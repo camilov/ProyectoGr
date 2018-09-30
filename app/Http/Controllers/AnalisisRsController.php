@@ -3,11 +3,13 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\AnalisisRs;
+use App\Riesgo;
+use App\Impacto;
+use App\Probabilidad;
 
-use App\Activo;
-use App\User;
 
-class ActivoController extends Controller
+class AnalisisRsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +18,9 @@ class ActivoController extends Controller
      */
     public function index()
     {
-        $activo = Activo::orderBy('idActivo','ASC')->paginate(5);
+        $analisisRs = AnalisisRs::orderBy('idAnalisisRs','ASC')->paginate(5);
 
-        return view('activo.index')->with('activo',$activo); 
+        return view('analisisRs.index')->with('analisisRs',$analisisRs);
     }
 
     /**
@@ -28,9 +30,11 @@ class ActivoController extends Controller
      */
     public function create()
     {
-        $user = User::select('name','idUsuario')->pluck('name','idUsuario');
-
-        return view('activo.create')->with('user',$user);
+        $riesgo = Riesgo::select('nombre','idRiesgo')->pluck('nombre','idRiesgo');
+        $impacto = Impacto::select('descripcion','idImpacto')->pluck('descripcion','idImpacto');
+        $probabilidad = Probabilidad::select('descripcion','idProbabilidad')->pluck('descripcion','idProbabilidad');
+        return view('analisisRs.create')->with('riesgo',$riesgo)->with('impacto',$impacto)
+                   ->with('probabilidad',$probabilidad);
     }
 
     /**
@@ -41,15 +45,10 @@ class ActivoController extends Controller
      */
     public function store(Request $request)
     {
-       /* if($request->hasFile('imagen')){
-            $file = $request->file('imagen');
-        }*/
-       // $request->file('imagen')->store('public');
-        //$file   = $request('imagen');
-        $activo = new Activo($request->all());
-        $activo->save();
+        $analisisRs = new AnalisisRs($request->all());
+        $analisisRs->save();
 
-        return redirect()->route('activo.index');
+        return redirect()->route('analisisRs.index');
     }
 
     /**

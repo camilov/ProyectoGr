@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Riesgo;
 use App\Activo;
-use App\User;
 
-class ActivoController extends Controller
+
+
+class RiesgoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +17,9 @@ class ActivoController extends Controller
      */
     public function index()
     {
-        $activo = Activo::orderBy('idActivo','ASC')->paginate(5);
+        $riesgo = Riesgo::orderBy('idRiesgo','ASC')->paginate(5);
 
-        return view('activo.index')->with('activo',$activo); 
+        return view('riesgo.index')->with('riesgo',$riesgo);
     }
 
     /**
@@ -28,9 +29,8 @@ class ActivoController extends Controller
      */
     public function create()
     {
-        $user = User::select('name','idUsuario')->pluck('name','idUsuario');
-
-        return view('activo.create')->with('user',$user);
+        $activo = Activo::select('nombre','idActivo')->pluck('nombre','idActivo');
+        return view('riesgo.create')->with('activo',$activo);
     }
 
     /**
@@ -41,15 +41,11 @@ class ActivoController extends Controller
      */
     public function store(Request $request)
     {
-       /* if($request->hasFile('imagen')){
-            $file = $request->file('imagen');
-        }*/
-       // $request->file('imagen')->store('public');
-        //$file   = $request('imagen');
-        $activo = new Activo($request->all());
-        $activo->save();
+        $riesgo = new Riesgo($request->all());
+        $riesgo->save();
 
-        return redirect()->route('activo.index');
+        return redirect()->route('riesgo.index');
+
     }
 
     /**

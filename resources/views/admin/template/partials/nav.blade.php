@@ -22,8 +22,18 @@
                     <a href="portfolio.html" class="main_menu_first">Inventario</a>
                     <ul>
                         <li class="second_list second_list_border"><a href="{{route('activo.index')}}" class="main_menu_second">Activos</a></li>
+
                     </ul>
                 </li>
+                <li class="first_list with_dropdown">
+                    <a href="portfolio.html" class="main_menu_first">Riesgo</a>
+                    <ul>
+                        <li class="second_list second_list_border"><a href="{{route('riesgo.index')}}" class="main_menu_second">Identificacion del riesgo</a></li>
+                        <li class="second_list second_list_border"><a href="{{route('analisisRs.index')}}" class="main_menu_second">Analisis del riesgo</a></li>
+                        
+                    </ul>
+                </li>
+
                 <!--<li class="first_list"><a href="#" class="main_menu_first">blog</a></li>
                 <li class="first_list"><a href="contact.html" class="main_menu_first">contact us</a></li>-->
             </ul>

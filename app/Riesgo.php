@@ -14,10 +14,10 @@ class Riesgo extends Model
 
     protected $table='riesgo';
     protected $primaryKey='idRiesgo';
-    protected $timestamps=false;
+   // protected $timestamps=false;
 
     protected $fillable = [
-        'idRiesgo','tipoRiesgo','proceso','nombre','descripcion','causa','efecto','fuente','propietario','idActivo's
+        'tipoRiesgo','proceso','nombre','descripcion','causa','efecto','fuente','propietario','idActivo'
     ];
 
     /**
@@ -27,4 +27,15 @@ class Riesgo extends Model
      */
     protected $hidden = [
     ];
+
+    public function Activo()
+    {
+        return $this->belongsTo('App\Activo','idActivo');
+    }
+
+    public function Analisis(){
+
+        return $this->hasMany('App\AnalisisRs');
+    }
+
 }

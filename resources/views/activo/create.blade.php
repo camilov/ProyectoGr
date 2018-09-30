@@ -6,7 +6,7 @@
 
 @section('content')
 
-	{!! Form::open(['route'=>'activo.store','method'=>'POST','enctype'=>"multipart/form-data"]) !!}
+	{!! Form::open(['route'=>'activo.store','method'=>'POST','files'=>true]) !!}
         
           <div class="form-group">
             {!! Form::label('nombre','Nombre') !!}
@@ -33,12 +33,7 @@
             {!! Form::label('usuario','Usuario') !!}
             {!! Form::select('usuario',$user,null,['class'=>'form-control','placeholder'=>'Seleccione usuario','required','style' => 'width:350px']) !!}
           </div>
-
-          <div class="form-group">
-            {!! Form::label('imagen','Imagen') !!}
-            {!! Form::file('imagen',null,['class'=>'form-control','required','style' => 'width:350px']) !!}
-          </div>
-
+         
           <div class="form-group">
                 {!! Form::submit('Registrar',['class'=>'btn btn-primary'])!!}
             

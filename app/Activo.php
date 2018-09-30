@@ -17,7 +17,7 @@ class Activo extends Model
     public $timestamps=false;
 
     protected $fillable = [
-        'nombre','codigo','responsable','tipoActivo','idUsuario','imagen'
+        'nombre','codigo','responsable','tipoActivo','idUsuario'
     ];
 
 
@@ -26,4 +26,12 @@ class Activo extends Model
     {
         return $this->belongsTo('App\User','idUsuario');
     }
+
+
+    public function Riesgo(){
+
+        return $this->hasMany('App\Riesgo');
+    }
 }
+
+

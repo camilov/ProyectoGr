@@ -14,10 +14,9 @@ class Probabilidad extends Model
 
     protected $table='probabilidad';
     protected $primaryKey='idProbabilidad';
-    protected $timestamps=false;
 
     protected $fillable = [
-        'idProbabilidad','descripcion','numero'
+        'idProbabilidad','descripcion'
     ];
 
     /**
@@ -27,4 +26,10 @@ class Probabilidad extends Model
      */
     protected $hidden = [
     ];
+
+    public function Analisis(){
+
+        return $this->hasMany('App\AnalisisRs');
+    }
+
 }

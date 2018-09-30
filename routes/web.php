@@ -30,3 +30,7 @@ Route::resource('rol','RolController');
 Route::resource('user','UserController');
 
 Route::resource('activo','ActivoController');
+
+Route::resource('riesgo','RiesgoController');
+
+Route::resource('analisisRs','AnalisisRsController');
