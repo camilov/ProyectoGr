@@ -7,7 +7,6 @@
         	<li>{{ $error }}</li>
     	@endforeach
 	</ul>
-
     <table class="table table-striped">
         <thead>
             <th scope="col">Activo</th>
@@ -19,14 +18,12 @@
         </thead>
         <tbody>
             @foreach($riesgo as $riesgos)
-                $multiplicacion = {{$riesgos->idImpacto}} * {{$riesgos->idProbabilidad}};
                 <tr>
                     <td>{{$riesgos->idActivo}}</td>
                     <td>{{$riesgos->nombre}}</td>
                     <td>{{$riesgos->riesgoDes}}</td>
                     <td>{{$riesgos->probabilidadDes}}</td>
                     <td>{{$riesgos->impactoDes}}</td>
-                    <td>$multiplicacion</td>
                 </tr>
             @endforeach
         </tbody>
