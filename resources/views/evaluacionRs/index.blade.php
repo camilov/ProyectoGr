@@ -24,6 +24,7 @@
                     <td>{{$riesgos->riesgoDes}}</td>
                     <td>{{$riesgos->probabilidadDes}}</td>
                     <td>{{$riesgos->impactoDes}}</td>
+                    <td>{{$riesgos->nivel}}</td>
                 </tr>
             @endforeach
         </tbody>

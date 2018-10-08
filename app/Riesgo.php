@@ -38,4 +38,11 @@ class Riesgo extends Model
         return $this->hasMany('App\AnalisisRs');
     }
 
+
+    public function Tratamiento(){
+
+        return $this->hasMany('App\Tratamiento');
+
+    }
+
 }

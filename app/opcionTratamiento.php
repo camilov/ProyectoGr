@@ -14,7 +14,7 @@ class opcionTratamiento extends Model
 
     protected $table='opcion_tratamiento';
     protected $primaryKey='idOpcionTratamiento';
-    protected $timestamps=false;
+    public $timestamps=false;
 
     protected $fillable = [
         'idOpcionTratamiento','descripcion'
@@ -27,4 +27,10 @@ class opcionTratamiento extends Model
      */
     protected $hidden = [
     ];
+
+    public function Tratamiento(){
+
+        return $this->hasMany('App\Tratamiento');
+
+    }
 }
