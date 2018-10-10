@@ -15,6 +15,7 @@
             <th scope="col">Probabilidad</th>
             <th scope="col">Impacto</th>
             <th scope="col">Nivel</th>
+            <th scope="col">Accion</th>
         </thead>
         <tbody>
             @foreach($riesgo as $riesgos)
@@ -25,6 +26,7 @@
                     <td>{{$riesgos->probabilidadDes}}</td>
                     <td>{{$riesgos->impactoDes}}</td>
                     <td>{{$riesgos->nivel}}</td>
+                    <td><a href="{{route('tratamiento.create',[$riesgos->idRiesgo])}}" class="btn btn-warning"> Opcion tratamiento</a></td>
                 </tr>
             @endforeach
         </tbody>

@@ -10,6 +10,8 @@ class Tratamiento extends Model
 
     protected $table='tratamiento';
     protected $primaryKey='idTratamiento';
+    public $timestamps=false;
+
 
     protected $fillable = [
         'idOpcionTratamiento','idRiesgo'
@@ -25,7 +27,7 @@ class Tratamiento extends Model
     }
 
 
-    ublic function opcionTratamiento()
+    public function opcionTratamiento()
     {
         return $this->belongsTo('App\opcionTratamiento','idOpcionTratamiento');
     }

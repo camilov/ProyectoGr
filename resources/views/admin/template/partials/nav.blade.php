@@ -33,7 +33,7 @@
                         <li class="second_list second_list_border"><a href="{{route('evaluacionRs.index')}}" class="main_menu_second">Evaluacion del riesgo</a></li>
                     </ul>
                 </li>
-
+                <li class="first_list"><a href="#" class="main_menu_first">Plan</a></li>
                 <!--<li class="first_list"><a href="#" class="main_menu_first">blog</a></li>
                 <li class="first_list"><a href="contact.html" class="main_menu_first">contact us</a></li>-->
             </ul>

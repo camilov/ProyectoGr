@@ -37,4 +37,9 @@ Route::resource('analisisRs','AnalisisRsController');
 
 Route::resource('evaluacionRs','EvaluacionRsController');
 
+Route::resource('tratamiento','TratamientoController');
+
+Route::get('tratamiento/{idActivo}/create',[
+		    'uses' =>'TratamientoController@create', 
+			'as' => 'tratamiento.create']);
 

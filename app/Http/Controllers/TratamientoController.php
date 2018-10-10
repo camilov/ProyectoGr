@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Tratamiento;
+use App\Riesgo;
+use App\opcionTratamiento;
+
 
 class TratamientoController extends Controller
 {
@@ -13,7 +17,7 @@ class TratamientoController extends Controller
      */
     public function index()
     {
-        //
+        return view('tratamiento.index');
     }
 
     /**
@@ -21,9 +25,10 @@ class TratamientoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($idRiesgo)
     {
-        //
+        $opcion = opcionTratamiento::select('nombre','idOpcionTratamiento')->pluck('nombre','idOpcionTratamiento');
+        return view('tratamiento.create')->with('opcion',$opcion)->with('idRiesgo',$idRiesgo);
     }
 
     /**
@@ -34,7 +39,9 @@ class TratamientoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tratamiento = new Tratamiento($request->all());
+        $tratamiento->save();
+        return redirect()->route('tratamiento.index');
     }
 
     /**

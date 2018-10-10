@@ -22,7 +22,7 @@ class EvaluacionRsController extends Controller
     	              ->join('riesgo','riesgo.idRiesgo', '=','analisis_rs.idRiesgo')
                       ->join('impacto','analisis_rs.idImpacto','=','impacto.idImpacto')
                       ->join('probabilidad','analisis_rs.idProbabilidad','=','probabilidad.idProbabilidad')
-    	              ->select('riesgo.idActivo','riesgo.nombre','riesgo.descripcion as riesgoDes','probabilidad.descripcion as probabilidadDes','impacto.descripcion as impactoDes','analisis_rs.idImpacto','analisis_rs.idProbabilidad',
+    	              ->select('riesgo.idActivo','riesgo.nombre','riesgo.descripcion as riesgoDes','probabilidad.descripcion as probabilidadDes','impacto.descripcion as impactoDes','analisis_rs.idImpacto','analisis_rs.idProbabilidad','riesgo.idRiesgo',
                           DB::raw('(analisis_rs.idImpacto * analisis_rs.idProbabilidad ) as nivel'))
                       ->orderBy('nivel','desc')
     	              ->get();
