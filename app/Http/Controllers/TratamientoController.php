@@ -17,7 +17,8 @@ class TratamientoController extends Controller
      */
     public function index()
     {
-        return view('tratamiento.index');
+        $tratamiento = Tratamiento::orderBy('idTratamiento','ASC')->paginate(5);
+        return view('tratamiento.index')->with('tratamiento',$tratamiento);
     }
 
     /**
