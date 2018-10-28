@@ -1,4 +1,4 @@
-@extends('admin.template.main')
+@extends('admin.layouts.app')
 
 
 @section('title','Creacion de  Usuario')

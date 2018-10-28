@@ -27,4 +27,6 @@ class Plan extends Model
      */
     protected $hidden = [
     ];
+
+    
 }
