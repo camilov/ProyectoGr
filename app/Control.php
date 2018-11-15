@@ -14,10 +14,10 @@ class Control extends Model
 
     protected $table='control';
     protected $primaryKey='idControl';
-    protected $timestamps=false;
+    public $timestamps=false;
 
     protected $fillable = [
-        'idControl','descripcion'
+        'idControlL','nombre','descripcion'
     ];
 
     /**
@@ -27,4 +27,9 @@ class Control extends Model
      */
     protected $hidden = [
     ];
+
+    public function Controles()
+    {
+        return $this->hasMany('App\Controles');
+    }
 }

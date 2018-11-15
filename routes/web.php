@@ -43,3 +43,21 @@ Route::get('tratamiento/{idActivo}/create',[
 		    'uses' =>'TratamientoController@create', 
 			'as' => 'tratamiento.create']);
 
+
+
+Route::resource('control','ControlController');
+
+Route::resource('controles','ControlesController');
+
+Route::get('controles/{idRiesgo},{idOpcionTratamiento}/create',[
+		    'uses' =>'ControlesController@create', 
+			'as' => 'controles.create']);
+
+
+Route::resource('plan','PlanController');
+
+Route::get('plan/{idRiesgo},{idOpcionTratamiento}/create',[
+		    'uses' =>'PlanController@create', 
+			'as' => 'plan.create']);
+
+

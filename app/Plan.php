@@ -14,10 +14,10 @@ class Plan extends Model
 
     protected $table='plan';
     protected $primaryKey='idPlan';
-    protected $timestamps=false;
+    public $timestamps=false;
 
     protected $fillable = [
-        'idPlan','idOpcionTratamiento','accionCorrectiva','responsable'
+        'idRiesgo','idOpcionTratamiento','accion','responsable','duracion','criterio'
     ];
 
     /**
@@ -28,5 +28,14 @@ class Plan extends Model
     protected $hidden = [
     ];
 
+    public function Riesgo()
+    {
+        return $this->belongsTo('App\Riesgo','idRiesgo');
+    }
+
+    public function Tratamiento()
+    {
+        return $this->belongsTo('App\Tratamiento','idOpcionTratamiento');
+    }
     
 }

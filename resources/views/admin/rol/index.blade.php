@@ -15,7 +15,7 @@
 	</ul>
 
 	<a href="{{route('rol.create')}}" class="btn btn-info">Registrar nueva rol</a><hr>
-    <table class="table table-striped">
+    <table class="table table-hover table-condensed table-striped table-bordered" align="center" style="width: 50%">
         <thead>
             <th scope="col">#</th>
             <th scope="col">Descripcion</th>

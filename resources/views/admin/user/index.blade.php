@@ -15,7 +15,7 @@
 	</ul>
 
 	<a href="{{route('user.create')}}" class="btn btn-info">Registrar nueva usuario</a><hr>
-    <table class="table table-striped">
+    <table class="table table-hover table-condensed table-striped table-bordered" align="center" style="width: 75%">
         <thead>
             <th scope="col">#</th>
             <th scope="col">Nombre</th>

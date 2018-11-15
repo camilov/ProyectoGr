@@ -1,9 +1,10 @@
 <header class="main-header">
     <!-- Logo -->
-    <a href="{!! url('/dashboard-v1') !!}" class="logo">
+  <!--  <a href="{!! url('/dashboard-v1') !!}" class="logo">-->
+    <p class="logo" ><span class="logo-lg"><b>GESTION DE RIESGOS</b></span></p>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>PROYECTO</b></span>
-    </a>
+        
+   <!-- </a>-->
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
         <!-- Sidebar toggle button-->

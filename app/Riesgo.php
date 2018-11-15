@@ -45,4 +45,10 @@ class Riesgo extends Model
 
     }
 
+    public function Plan(){
+
+        return $this->hasMany('App\Plan');
+
+    }
+
 }

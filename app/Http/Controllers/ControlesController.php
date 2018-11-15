@@ -3,13 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
-use app\AnalisisRs;
-use app\Riesgo;
+use App\Controles;
+use App\Control;
 use DB;
 
 
-class EvaluacionRs extends Controller
+class ControlesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,14 +17,9 @@ class EvaluacionRs extends Controller
      */
     public function index()
     {
-    	$riesgo = DB::table('riesgo')
-    	              ->join('analisis_rs','riesgo.idRiesgo', '=','analisis_rs.idRiesgo')
-    	              ->select('riesgo.id_activo','analisis_rs.idImpacto','analisis_rs.idProbabilidad')
-    	              ->get();
-    	return view('evaluacionRs.index')->with('riesgo',$riesgo);
-        /*$analisisRs = AnalisisRs::orderBy('idAnalisisRs','ASC')->paginate(5);
-
-        return view('analisisRs.index')->with('analisisRs',$analisisRs);*/
+        
+        $controles = Controles::orderBy('idControles','ASC')->paginate(5);
+        return view('controles.index')->with('controles',$controles);
     }
 
     /**
@@ -33,9 +27,13 @@ class EvaluacionRs extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($idRiesgo,$idOpcionTratamiento)
     {
-        
+       // dd($idRiesgo);
+        $control = Control::select('nombre','idControl')->pluck('nombre','idControl');
+
+
+        return view('controles.create')->with('control',$control)->with('idRiesgo',$idRiesgo)->with('idOpcionTratamiento',$idOpcionTratamiento);
     }
 
     /**
@@ -46,7 +44,10 @@ class EvaluacionRs extends Controller
      */
     public function store(Request $request)
     {
-        
+        $controles = new Controles($request->all());
+        $controles->save();
+
+        return redirect()->route('controles.index');
     }
 
     /**

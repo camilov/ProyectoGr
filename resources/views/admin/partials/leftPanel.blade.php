@@ -45,6 +45,22 @@
                     <li><a href="{{route('evaluacionRs.index')}}"><i class="fa fa-circle-o"></i> Evaluacion del riesgo</a></li>
                 </ul>
             </li>
+
+            <!--CONTROL-------------------------------------------------------------------------------->       
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-edit"></i> <span>Controles</span>
+                    <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('control.index')}}"><i class="fa fa-circle-o"></i>Controles</a></li>
+                </ul>
+            </li>
+            
+
+            <!--PLAN----------------------------------------------------------------------------------->
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-edit"></i> <span>Plan</span>
@@ -53,7 +69,7 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="#"><i class="fa fa-circle-o"></i> a la espera..</a></li>
+                    <li><a href="{{route('plan.index')}}"><i class="fa fa-circle-o"></i>plan</a></li>
                 </ul>
             </li>
             
