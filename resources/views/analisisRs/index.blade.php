@@ -9,8 +9,8 @@
 	</ul>
 
 	<a href="{{route('analisisRs.create')}}" class="btn btn-info">Registrar</a><hr>
-    <table class="table table-hover table-condensed table-striped table-bordered" align="center" style="width: 50%">
-        <thead>
+    <table class="table table-hover table-condensed table-striped table-bordered" id="exTable">
+        <thead class="tableThead">
             <th scope="col">Riesgo</th>
             <th scope="col">Impacto</th>
             <th scope="col">Probabilidad</th>

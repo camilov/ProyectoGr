@@ -26,6 +26,7 @@ class EvaluacionRsController extends Controller
                           DB::raw('(analisis_rs.idImpacto * analisis_rs.idProbabilidad ) as nivel'))
                       ->orderBy('nivel','desc')
                       ->get();
+      //dd($riesgo);
     	return view('evaluacionRs.index')->with('riesgo',$riesgo);
     }
 

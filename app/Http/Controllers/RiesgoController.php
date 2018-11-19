@@ -43,7 +43,7 @@ class RiesgoController extends Controller
     {
         $riesgo = new Riesgo($request->all());
         $riesgo->save();
-
+        $request->session()->flash('mensaje', 'Riesgo Creado Con exito');
         return redirect()->route('riesgo.index');
 
     }
@@ -67,7 +67,8 @@ class RiesgoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $riesgo = Riesgo::findOrFail($id);
+        return view('riesgo.edit')->with('riesgo',$riesgo);
     }
 
     /**
@@ -79,7 +80,16 @@ class RiesgoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $riesgo=Riesgo::findOrFail($id);
+        $riesgo->proceso =$request->proceso;
+        $riesgo->nombre =$request->nombre;
+        $riesgo->descripcion =$request->descripcion;
+        $riesgo->causa =$request->causa;
+        $riesgo->efecto =$request->efecto;
+        $riesgo->fuente =$request->fuente;
+        $riesgo->save();
+        session()->flash('messag',  'Riesgo Modificado.');
+        return redirect()->route('riesgo.index');
     }
 
     /**
@@ -90,6 +100,9 @@ class RiesgoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $riesgo = Riesgo::findOrFail($id);
+        $riesgo->delete();
+        session()->flash('message',  'Riesgo eliminado.');
+        return redirect()->route('riesgo.index');
     }
 }

@@ -17,7 +17,7 @@ class Activo extends Model
     public $timestamps=false;
 
     protected $fillable = [
-        'nombre','codigo','responsable','tipoActivo','idUsuario'
+        'nombre','codigo','responsable','tipoActivo','imagen','idUsuario'
     ];
 
 

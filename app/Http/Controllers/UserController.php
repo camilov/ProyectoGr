@@ -41,6 +41,7 @@ class UserController extends Controller
         $user = new User($request->all());
         $user->password=bcrypt($request->password);
         $user->save();
+        $request->session()->flash('mensaje', 'Usuario Creado Con exito');
         return redirect()->route('user.index');
     }
 
@@ -63,7 +64,8 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('admin.user.edit')->with('user',$user);
     }
 
     /**
@@ -75,7 +77,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user=User::findOrFail($id);
+        $user->name =$request->name;
+        $user->email =$request->email;
+        $user->save();
+        session()->flash('messag',  'Usuario '.$user->name. ' ha sido Modificado.');
+        return redirect()->route('user.index');
     }
 
     /**
@@ -86,6 +93,10 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+        $user = User::findOrFail($id);
+        $user->delete();
+        session()->flash('message',  'Usuario '.$user->name. ' ha sido eliminado.');
+        return redirect()->route('user.index');
     }
 }

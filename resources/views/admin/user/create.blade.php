@@ -13,12 +13,13 @@
             {!! Form::label('nombre','Nombre') !!}
             {!! Form::text('nombre',null,['class'=>'form-control','placeholder'=>'Nombre','required','style' => 'width:350px']) !!}
           </div>
+
           <div class="form-group">
             {!! Form::label('apellido','Apellido') !!}
             {!! Form::text('apellido',null,['class'=>'form-control','placeholder'=>'Apellido','required','style' => 'width:350px']) !!}
           </div>
 
-		  <div class="form-group">
+		      <div class="form-group">
             {!! Form::label('edad','Edad') !!}
             {!! Form::text('edad',null,['class'=>'form-control','placeholder'=>'Nombre','required','style' => 'width:350px']) !!}
           </div>

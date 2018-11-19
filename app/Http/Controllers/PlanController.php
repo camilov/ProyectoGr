@@ -24,7 +24,7 @@ class PlanController extends Controller
         $plan = DB::table('plan')
                       ->join('riesgo','riesgo.idRiesgo', '=','plan.idRiesgo')
                       ->join('opcion_tratamiento','opcion_tratamiento.idOpcionTratamiento','=','plan.idOpcionTratamiento')
-                      ->select('riesgo.nombre as riesgo','opcion_tratamiento.nombre as opcion','accion','responsable','duracion','criterio')
+                      ->select('riesgo.nombre as riesgo','opcion_tratamiento.nombre as opcion','accion','responsable','duracion','criterio','idPlan')
                       //->where('controles.idRiesgo','=',$idRiesgo)
                       ->orderBy('idPlan','desc')
                       ->get();
@@ -43,7 +43,7 @@ class PlanController extends Controller
         
        $accion = DB::table('controles')
                       ->join('control','control.idControl', '=','controles.idControl')
-                      ->select('control.descripcion')
+                      ->select('control.descripcion as desc')
                       ->where('controles.idRiesgo','=',$idRiesgo)
                       ->orderBy('idControles','desc')
                       ->get();
@@ -63,6 +63,7 @@ class PlanController extends Controller
     {
         $plan = new Plan($request->all());
         $plan->save();
+        $request->session()->flash('mensaje', 'Plan Creado Con exito');
         return redirect()->route('plan.index');
     }
 
@@ -85,7 +86,8 @@ class PlanController extends Controller
      */
     public function edit($id)
     {
-        //
+        $plan = Plan::findOrFail($id);
+        return view('plan.edit')->with('plan',$plan);
     }
 
     /**
@@ -97,7 +99,14 @@ class PlanController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $plan=Plan::findOrFail($id);
+        $plan->accion =$request->accion;
+        $plan->responsable =$request->responsable;
+        $plan->duracion =$request->duracion;
+        $plan->criterio =$request->criterio;
+        $plan->save();
+        session()->flash('messag',  'Plan Modificado.');
+        return redirect()->route('plan.index');
     }
 
     /**
@@ -108,6 +117,9 @@ class PlanController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $plan = Plan::findOrFail($id);
+        $plan->delete();
+        session()->flash('message',  'Plan eliminado.');
+        return redirect()->route('plan.index');
     }
 }

@@ -28,10 +28,25 @@ Route::resource('responsabilidad','ResponsabilidadController');
 Route::resource('rol','RolController');
 
 Route::resource('user','UserController');
+Route::get('user/{ID}/destroy',[
+	       'uses' => 'UserController@destroy',
+	        'as'  => 'user.destroy'
+	    ]);
+
 
 Route::resource('activo','ActivoController');
 
+Route::get('activo/{ID}/destroy',[
+	       'uses' => 'ActivoController@destroy',
+	        'as'  => 'activo.destroy'
+	    ]);
+
 Route::resource('riesgo','RiesgoController');
+
+Route::get('riesgo/{ID}/destroy',[
+	       'uses' => 'RiesgoController@destroy',
+	        'as'  => 'riesgo.destroy'
+	    ]);
 
 Route::resource('analisisRs','AnalisisRsController');
 
@@ -55,6 +70,11 @@ Route::get('controles/{idRiesgo},{idOpcionTratamiento}/create',[
 
 
 Route::resource('plan','PlanController');
+
+Route::get('plan/{ID}/destroy',[
+	       'uses' => 'PlanController@destroy',
+	        'as'  => 'plan.destroy'
+	    ]);
 
 Route::get('plan/{idRiesgo},{idOpcionTratamiento}/create',[
 		    'uses' =>'PlanController@create', 

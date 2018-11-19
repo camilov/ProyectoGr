@@ -1,0 +1,39 @@
+.tableThead{
+    background:#8181F7;
+    text-align: center;
+}
+
+#registrar{
+ 	float:right;
+}
+
+#comp{
+	border: 1px solid #00cc00; /* Color del borde, debe ser más oscuro que fondo */
+	background: #E6E6E6; /* Fondo */
+	border-radius: 6px;  /* Bordes redondos */
+	box-shadow: inset 3px 3px 3px rgba(255,255,255,.7), inset -2px -2px 3px rgba(0,0,0,.1), 2px 2px 10px rgba(0,0,0,.1);
+	text-shadow: 1px 1px 1px rgba(255,255,255,.9);  /* Sombra del texto */
+}
+
+
+#exTable{
+	align:center;
+	width: 75%;
+	border: 3px solid #000000;
+	-moz-border-radius:7px;
+	-webkit-border-radius: 7px;
+	padding: 10px;
+}
+
+.titulos{
+	border: 1px solid #00cc00; /* Color del borde, debe ser más oscuro que fondo */
+	background:#E6E6E6 /* Fondo */
+	border-radius: 6px;  /* Bordes redondos */
+	box-shadow: inset 3px 3px 3px rgba(255,255,255,.7), inset -2px -2px 3px rgba(0,0,0,.1), 2px 2px 10px rgba(0,0,0,.1);
+	text-shadow: 1px 1px 1px rgba(255,255,255,.9);  /* Sombra del texto */
+	width: 500px;
+	vertical-align: left;
+	font-size: 25px;
+	font-family: "Times New Roman", Times, serif;
+	text-transform: uppercase;
+}

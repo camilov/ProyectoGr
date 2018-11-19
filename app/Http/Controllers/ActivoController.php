@@ -41,14 +41,20 @@ class ActivoController extends Controller
      */
     public function store(Request $request)
     {
-       /* if($request->hasFile('imagen')){
-            $file = $request->file('imagen');
-        }*/
-       // $request->file('imagen')->store('public');
-        //$file   = $request('imagen');
-        $activo = new Activo($request->all());
+       if($request->hasFile('imagen')){
+          $file = $request->file('imagen');
+          $name = time().$file->getClientOriginalName();
+          $file->move(public_path().'/images/',$name);  
+       }
+        $activo = new Activo();
+        $activo->nombre = $request->input('nombre');
+        $activo->codigo = $request->input('codigo');
+        $activo->responsable = $request->input('responsable');
+        $activo->tipoActivo = $request->input('tipoActivo');
+        $activo->idUsuario = $request->input('idUsuario');
+        $activo->imagen = $name;
         $activo->save();
-
+        $request->session()->flash('mensaje', 'Actvivo Creado Con exito');
         return redirect()->route('activo.index');
     }
 
@@ -71,7 +77,8 @@ class ActivoController extends Controller
      */
     public function edit($id)
     {
-        //
+        $activo = Activo::findOrFail($id);
+        return view('activo.edit')->with('activo',$activo);
     }
 
     /**
@@ -83,7 +90,13 @@ class ActivoController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $activo=Activo::findOrFail($id);
+        $activo->codigo =$request->codigo;
+        $activo->responsable =$request->responsable;
+        $activo->tipoActivo =$request->tipoActivo;
+        $activo->save();
+        session()->flash('messag',  'Activo '.$activo->nombre. ' ha sido Modificado.');
+        return redirect()->route('activo.index');
     }
 
     /**
@@ -94,6 +107,9 @@ class ActivoController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $activo = Activo::findOrFail($id);
+        $activo->delete();
+        session()->flash('message',  'Usuario '.$activo->nombre. ' ha sido eliminado.');
+        return redirect()->route('activo.index');
     }
 }
