@@ -48,7 +48,7 @@
                     <td>{{$planes->criterio}}</td>
                     <td>
                     <a href="{{route('plan.edit',$planes->idPlan)}}" class="btn btn-warning glyphicon glyphicon-pencil"></a>
-                    <a href="{{route('plan.destroy',$planes->idPlan)}}" onclick="return confirm('¿Seguro que deseas eliminar el usuario?')" class="btn btn-danger glyphicon glyphicon-trash"></a>
+                    <a href="{{route('plan.destroy',$planes->idPlan)}}" onclick="return confirm('¿Seguro que deseas eliminar el plan?')" class="btn btn-danger glyphicon glyphicon-trash"></a>
                     </td>
                 </tr>
             @endforeach

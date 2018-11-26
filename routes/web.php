@@ -50,6 +50,11 @@ Route::get('riesgo/{ID}/destroy',[
 
 Route::resource('analisisRs','AnalisisRsController');
 
+Route::get('analisisRs/{ID}/destroy',[
+	       'uses' => 'AnalisisRsController@destroy',
+	        'as'  => 'analisisRs.destroy'
+	    ]);
+
 Route::resource('evaluacionRs','EvaluacionRsController');
 
 Route::resource('tratamiento','TratamientoController');
@@ -61,6 +66,11 @@ Route::get('tratamiento/{idActivo}/create',[
 
 
 Route::resource('control','ControlController');
+
+Route::get('control/{ID}/destroy',[
+	       'uses' => 'ControlController@destroy',
+	        'as'  => 'control.destroy'
+	    ]);
 
 Route::resource('controles','ControlesController');
 

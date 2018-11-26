@@ -65,7 +65,8 @@ class ControlController extends Controller
      */
     public function edit($id)
     {
-        //
+        $control = Control::findOrFail($id);
+        return view('control.edit')->with('control',$control);
     }
 
     /**
@@ -77,7 +78,11 @@ class ControlController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $control=Control::findOrFail($id);
+        $control->descripcion =$request->descripcion;
+        $control->save();
+        session()->flash('messag',  'Control Modificado.');
+        return redirect()->route('control.index');
     }
 
     /**
@@ -88,6 +93,9 @@ class ControlController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $control = Control::findOrFail($id);
+        $control->delete();
+        session()->flash('message',  'Control eliminado.');
+        return redirect()->route('control.index');
     }
 }

@@ -70,7 +70,10 @@ class AnalisisRsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $analisisRs = AnalisisRs::findOrFail($id);
+        $impacto = Impacto::select('descripcion','idImpacto')->pluck('descripcion','idImpacto');
+        $probabilidad = Probabilidad::select('descripcion','idProbabilidad')->pluck('descripcion','idProbabilidad');
+        return view('analisisRs.edit')->with('analisisRs',$analisisRs)->with('impacto',$impacto)->with('probabilidad',$probabilidad);
     }
 
     /**
@@ -82,7 +85,13 @@ class AnalisisRsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $analisisRs=AnalisisRs::findOrFail($id);
+        $analisisRs->idProbabilidad =$request->idProbabilidad;
+        $analisisRs->idImpacto =$request->idImpacto;
+        $analisisRs->save();
+        session()->flash('messag',  'Registro Modificado.');
+        return redirect()->route('analisisRs.index');
     }
 
     /**
@@ -93,6 +102,9 @@ class AnalisisRsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $analisisRs = AnalisisRs::findOrFail($id);
+        $analisisRs->delete();
+        session()->flash('message',  'Registro  eliminado.');
+        return redirect()->route('analisisRs.index');
     }
 }

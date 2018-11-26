@@ -14,8 +14,27 @@
     	@endforeach
 	</ul>
 
+    @if ($flash = session('messag')) 
+        <div class="alert alert-success">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ $flash }}
+     </div>
+    @endif
+    @if ($flash = session('message')) 
+        <div class="alert alert-success">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+        {{ $flash }}
+     </div>
+    @endif
+    @if(!session('mensaje')==null)
+     <div class="alert alert-success">
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+         {{session('mensaje')}}
+     </div>
+    @endif
 
-	<a href="{{route('control.create')}}" class="btn btn-info">Registrar nuevo control</a><hr>
+
+	<a href="{{route('control.create')}}" class="btn btn-info glyphicon glyphicon-plus">Registrar</a><hr>
 
 
     <div class="container">
@@ -27,6 +46,7 @@
             <th scope="col">Id</th>
             <th scope="col">Nombre</th>
             <th scope="col">Descripcion</th>
+            <th scope="col">Acciones</th>
         </thead>
         <tbody>
             @foreach($control as $controles)
@@ -34,6 +54,10 @@
                     <td>{{$controles->idControlL}}</td>
                     <td>{{$controles->nombre}}</td>
                     <td>{{$controles->descripcion}}</td>
+                    <td>
+                    <a href="{{route('control.edit',$controles->idControl)}}" class="btn btn-warning glyphicon glyphicon-pencil"></a>
+                    <a href="{{route('control.destroy',$controles->idControl)}}" onclick="return confirm('¿Seguro que deseas eliminar el control?')" class="btn btn-danger glyphicon glyphicon-trash"></a>
+                    </td>
                 </tr>
                 @endforeach
         </tbody>

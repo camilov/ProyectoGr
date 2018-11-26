@@ -57,7 +57,7 @@
                     <td>{{$riesgos->propietario}}</td>
                     <td>
                     <a href="{{route('riesgo.edit',$riesgos->idRiesgo)}}" class="btn btn-warning glyphicon glyphicon-pencil"></a>
-                    <a href="{{route('riesgo.destroy',$riesgos->idRiesgo)}}" onclick="return confirm('¿Seguro que deseas eliminar el usuario?')" class="btn btn-danger glyphicon glyphicon-trash"></a>
+                    <a href="{{route('riesgo.destroy',$riesgos->idRiesgo)}}" onclick="return confirm('¿Seguro que deseas eliminar el riesgo?')" class="btn btn-danger glyphicon glyphicon-trash"></a>
                     </td>
                 </tr>
                 @endforeach

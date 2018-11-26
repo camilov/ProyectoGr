@@ -55,7 +55,7 @@
                     <th><img src="images/{{$activos->imagen}}" alt="" height="42" width="42"></th>
                     <td>
                     <a href="{{route('activo.edit',$activos->idActivo)}}" class="btn btn-warning glyphicon glyphicon-pencil"></a>
-                    <a href="{{route('activo.destroy',$activos->idActivo)}}" onclick="return confirm('¿Seguro que deseas eliminar el usuario?')" class="btn btn-danger glyphicon glyphicon-trash"></a>
+                    <a href="{{route('activo.destroy',$activos->idActivo)}}" onclick="return confirm('¿Seguro que deseas eliminar el activo?')" class="btn btn-danger glyphicon glyphicon-trash"></a>
                     </td>
                 </tr>
                 @endforeach
