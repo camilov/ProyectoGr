@@ -32,10 +32,16 @@
          {{session('mensaje')}}
      </div>
     @endif
-
+    
+    {!! Form::open(['route' => 'control.index','method' => 'GET','class' => 'navbar-form pull-right'])!!}
+        <div class = "input-group">
+            {!! Form::text('nombre',null,['class'=>'form-control','placeholder' => 'Buscar control..','aria-describedby'=>'search'])!!}
+            <!--<span class ="input-group-addon" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>-->
+        </div>
+    {!! Form::close()!!}
 
 	<a href="{{route('control.create')}}" class="btn btn-info glyphicon glyphicon-plus">Registrar</a><hr>
-
+    
 
     <div class="container">
         <strong>Controles ISO 27001</strong>

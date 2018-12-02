@@ -7,7 +7,7 @@ use App\AnalisisRs;
 use App\Riesgo;
 use App\Impacto;
 use App\Probabilidad;
-
+use App\Http\Requests\AnalisisRsRequest;
 
 class AnalisisRsController extends Controller
 {
@@ -43,7 +43,7 @@ class AnalisisRsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AnalisisRsRequest $request)
     {
         $analisisRs = new AnalisisRs($request->all());
         $analisisRs->save();

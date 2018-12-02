@@ -32,4 +32,9 @@ class Control extends Model
     {
         return $this->hasMany('App\Controles');
     }
+
+    public function scopeSearch($query,$nombre)
+    {
+        return $query->where('nombre', 'LIKE', "%$nombre%");
+    }
 }

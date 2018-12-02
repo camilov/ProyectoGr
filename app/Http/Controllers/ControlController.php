@@ -12,9 +12,9 @@ class ControlController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $control = Control::orderBy('idControl','ASC')->paginate(5);
+        $control = Control::search($request->nombre)->orderBy('idControl','ASC')->paginate(5);
 
         return view('control.index')->with('control',$control); 
     }
@@ -40,7 +40,7 @@ class ControlController extends Controller
         
         $control = new Control($request->all());
         $control->save();
-
+        $request->session()->flash('mensaje', 'Control Creado Con exito');
         return redirect()->route('control.index');
 
 

@@ -14,9 +14,9 @@ class ActivoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $activo = Activo::orderBy('idActivo','ASC')->paginate(5);
+        $activo = Activo::search($request->nombre)->orderBy('idActivo','ASC')->paginate(5);
 
         return view('activo.index')->with('activo',$activo); 
     }
