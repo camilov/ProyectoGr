@@ -23,12 +23,12 @@
           </div>
          
           <div class="form-group">
-            {!! Form::label('idImpacto','Impacto') !!}
+            {!! Form::label('idImpacto','%Impacto') !!}
             {!! Form::select('idImpacto',$impacto,null,['class'=>'form-control','placeholder'=>'Seleccione Impacto','required','style' => 'width:350px']) !!}
           </div>
 
           <div class="form-group">
-            {!! Form::label('idProbabilidad','Probabilidad') !!}
+            {!! Form::label('idProbabilidad','%Probabilidad') !!}
             {!! Form::select('idProbabilidad',$probabilidad,null,['class'=>'form-control','placeholder'=>'Seleccione probabilidad','required','style' => 'width:350px']) !!}
           </div>
           

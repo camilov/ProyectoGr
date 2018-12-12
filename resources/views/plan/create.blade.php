@@ -36,7 +36,7 @@
           </div>
 
           <div class="form-group">
-            {!! Form::label('criterio','Criterio') !!}
+            {!! Form::label('criterio','Criterio de exito') !!}
             {!! Form::text('criterio',null,['class'=>'form-control','required','style' => 'width:350px']) !!}
           </div>
 

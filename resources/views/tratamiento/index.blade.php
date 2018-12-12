@@ -10,7 +10,7 @@
     
 	<table class="table table-hover table-condensed table-striped table-bordered" id="exTable">
         <thead class="tableThead">
-            <th scope="col">Opcio de tratamiento</th>
+            <th scope="col">Opcion de tratamiento</th>
             <th scope="col">Riesgo</th>
             <th scope="col">plan</th>
         </thead>

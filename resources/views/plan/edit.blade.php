@@ -20,7 +20,7 @@
         </div>
         
         <div class="form-group">
-            {!! Form::label('criterio','criterio')!!}
+            {!! Form::label('criterio','criterio de exito')!!}
             {!! Form::text('criterio',$plan->criterio,['class'=>'form-control','placeholder'=>'Criterio','required','style' => 'width:350px'])!!}
         </div>
 

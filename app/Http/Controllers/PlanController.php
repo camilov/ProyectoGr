@@ -20,18 +20,28 @@ class PlanController extends Controller
      */
     public function index()
     {
-        //$plan = Plan::orderBy('idPlan','ASC')->paginate(5);
+       /* $plan = DB::table('plan')
+                      ->join('riesgo','riesgo.idRiesgo', '=','plan.idRiesgo')
+                      ->join('opcion_tratamiento','opcion_tratamiento.idOpcionTratamiento','=','plan.idOpcionTratamiento')
+                      ->select('riesgo.nombre as riesgo','opcion_tratamiento.nombre as opcion','accion','responsable','duracion','criterio','idPlan')
+                      ->orderBy('idPlan','desc')
+                      ->get();*/
+
+        return view('plan.index');
+    }
+
+
+    public function listall(){
+
         $plan = DB::table('plan')
                       ->join('riesgo','riesgo.idRiesgo', '=','plan.idRiesgo')
                       ->join('opcion_tratamiento','opcion_tratamiento.idOpcionTratamiento','=','plan.idOpcionTratamiento')
                       ->select('riesgo.nombre as riesgo','opcion_tratamiento.nombre as opcion','accion','responsable','duracion','criterio','idPlan')
-                      //->where('controles.idRiesgo','=',$idRiesgo)
                       ->orderBy('idPlan','desc')
                       ->get();
-       // dd($plan);
-        return view('plan.index')->with('plan',$plan);
-    }
 
+        return view('plan.listall');
+    }
     /**
      * Show the form for creating a new resource.
      *

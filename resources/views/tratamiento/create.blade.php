@@ -22,7 +22,7 @@
         
 
           <div class="form-group">
-            {!! Form::label('idOpcionTratamiento','Opcion') !!}
+            {!! Form::label('idOpcionTratamiento','Opcion de tratamiento') !!}
             {!! Form::select('idOpcionTratamiento',$opcion,null,['class'=>'form-control','placeholder'=>'Seleccione opcion de tratamiento','required','style' => 'width:350px']) !!}
           </div>
 

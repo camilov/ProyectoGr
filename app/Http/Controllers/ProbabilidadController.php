@@ -3,20 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\control;
+use App\Probabilidad;
 
-class ControlController extends Controller
+class ProbabilidadController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
-        $control = Control::search($request->nombre)->orderBy('idControl','ASC')->paginate(5);
-
-        return view('control.index')->with('control',$control); 
+        $probabilidad = Probabilidad::orderBy('idProbabilidad','ASC')->paginate(5);
+        return view('probabilidad.index')->with('probabilidad',$probabilidad);
     }
 
     /**
@@ -26,7 +25,7 @@ class ControlController extends Controller
      */
     public function create()
     {
-        return view('control.create');
+        return view('probabilidad.create');
     }
 
     /**
@@ -37,12 +36,10 @@ class ControlController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $control = new Control($request->all());
-        $control->save();
-        $request->session()->flash('mensaje', 'Control Creado Con exito');
-        return redirect()->route('control.index');
-
+        $probabilidad = new Probabilidad($request->all());
+        $probabilidad->save();
+        $request->session()->flash('mensaje', 'Probabilidad Creada Con exito');
+        return redirect()->route('probabilidad.index');
 
     }
 
@@ -65,8 +62,8 @@ class ControlController extends Controller
      */
     public function edit($id)
     {
-        $control = Control::findOrFail($id);
-        return view('control.edit')->with('control',$control);
+        $probabilidad = Probabilidad::findOrFail($id);
+        return view('probabilidad.edit')->with('probabilidad',$probabilidad);
     }
 
     /**
@@ -78,11 +75,11 @@ class ControlController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $control=Control::findOrFail($id);
-        $control->acciones =$request->acciones;
-        $control->save();
-        session()->flash('messag',  'Control Modificado.');
-        return redirect()->route('control.index');
+        $probabilidad=Probabilidad::findOrFail($id);
+        $probabilidad->descripcion =$request->descripcion;
+        $probabilidad->save();
+        session()->flash('messag',  'Probabilidad ha sido Modificado.');
+        return redirect()->route('probabilidad.index');
     }
 
     /**
@@ -93,9 +90,6 @@ class ControlController extends Controller
      */
     public function destroy($id)
     {
-        $control = Control::findOrFail($id);
-        $control->delete();
-        session()->flash('message',  'Control eliminado.');
-        return redirect()->route('control.index');
+        //
     }
 }

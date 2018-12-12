@@ -14,18 +14,24 @@
           </div>
 
           <div class="form-group">
-            {!! Form::label('nombre','Nombre') !!}
+            {!! Form::label('objetivo','Objetivo') !!}
             {!! Form::text('nombre',null,['class'=>'form-control','placeholder'=>'nombre','required','style' => 'width:350px']) !!}
           </div>
 
 		      <div class="form-group">
-            {!! Form::label('descripcion','Descripcion') !!}
+            {!! Form::label('control','Control') !!}
             {!! Form::textArea('descripcion',null,['class'=>'form-control','placeholder'=>'descripcion','required','style' => 'width:350px']) !!}
           </div>
+          
+          <div class="form-group">
+            {!! Form::label('acciones','Acciones') !!}
+            {!! Form::textArea('acciones',null,['class'=>'form-control','placeholder'=>'Acciones','style' => 'width:350px']) !!}
+          </div>
+  
+
 
           <div class="form-group">
                 {!! Form::submit('Registrar',['class'=>'btn btn-primary'])!!}
-            
           </div>
    	{!! Form::close() !!}
 

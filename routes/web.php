@@ -21,6 +21,11 @@ Route::get('/', function () {
 	'rol'=>'RolController',
 	'user'=>'UserController',
 ]);*/
+
+
+
+Route::resource('probabilidad','ProbabilidadController');
+
 Route::resource('actividad','ActividadController');
 
 Route::resource('responsabilidad','ResponsabilidadController');
@@ -80,6 +85,7 @@ Route::get('controles/{idRiesgo},{idOpcionTratamiento}/create',[
 
 
 Route::resource('plan','PlanController');
+Route::get('listall','PlanController@listall');
 
 Route::get('plan/{ID}/destroy',[
 	       'uses' => 'PlanController@destroy',

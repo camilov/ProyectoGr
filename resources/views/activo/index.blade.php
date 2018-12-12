@@ -36,7 +36,7 @@
 
     {!! Form::open(['route' => 'activo.index','method' => 'GET','class' => 'navbar-form pull-right'])!!}
         <div class = "input-group">
-            {!! Form::text('nombre',null,['class'=>'form-control','placeholder' => 'Buscar activo..','aria-describedby'=>'search'])!!}
+            {!! Form::text('nombre',null,['class'=>'form-control','placeholder' => 'Buscar activo..','aria-describedby'=>'search'])!!}hp
             <!--<span class ="input-group-addon" id="search"><span class="glyphicon glyphicon-search" aria-hidden="true"></span></span>-->
         </div>
     {!! Form::close()!!}

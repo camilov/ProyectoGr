@@ -5,8 +5,8 @@
     {!! Form::open(['route'=>['control.update',$control],'method'=>'PUT']) !!}
         
         <div class="form-group">
-            {!! Form::label('descripcion','Descripcion')!!}
-            {!! Form::textArea('descripcion',$control->descripcion,['class'=>'form-control','required','style' => 'width:350px'])!!}
+            {!! Form::label('acciones','Acciones')!!}
+            {!! Form::textArea('acciones',$control->acciones,['class'=>'form-control','required','style' => 'width:350px'])!!}
         </div>
         
         <div class="form-group">
