@@ -27,37 +27,44 @@
      </div>
     @endif
 
-	<div id="list-product">
-        
+
+    <div class="form-group">
+        {!! Form::label('riesgo','Riesgo') !!}
+        {!! Form::select('idRiesgo',$riesgo,null,['class'=>'form-control','placeholder'=>'Seleccione riesgo','required','style' => 'width:350px','id'=>'idRiesgo']) !!}
     </div>
+
+    <div id="list-product"></div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+     
+    <script >
         
-    <script type="text/javascript">
-        
-        $(document).ready(function(){
-            listProduct();
+     $(document).ready(function(){
+            $("#idRiesgo").change(function(){
+                var valor = $(this).val();
+                listTar(valor);
+                }); 
+      });
+
+
+     function  listTar(valor){
+
+        var valor1 = valor;
+
+        $.ajax({
+          type:'GET',
+          url:'{{url('listar')}}'+'/'+valor1,
+          beforeSend: function () {
+                        $("#list-product").html("Procesando, espere por favor...");
+                },
+          success: function(data){
+            $('#list-product').empty().html(data);
+          }
         });
 
+     }
 
-
-        $("#nuevo").click(function(event){
-
-            document.location.href="{{route('plan.listall')}}";
-
-        });
-
-
-        var listProduct = function(){
-
-            $.ajax({
-                type:'get',
-                url:'{{url('listall')}}',
-                success: function(data){
-                    $('#list-product').empty().html(data);
-                }
-            });
-        }
     </script>
-
-
-
+       
+       
 @endsection

@@ -85,7 +85,12 @@ Route::get('controles/{idRiesgo},{idOpcionTratamiento}/create',[
 
 
 Route::resource('plan','PlanController');
-Route::get('listall','PlanController@listall');
+
+Route::get('listar/{ID}','PlanController@listar');
+/*Route::get('listar/{ID}/listar',[
+		   'uses' => 'PlanController@listar',
+		   'as'	  => 'plan.listar'
+		   ]);*/
 
 Route::get('plan/{ID}/destroy',[
 	       'uses' => 'PlanController@destroy',

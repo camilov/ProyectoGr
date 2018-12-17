@@ -20,28 +20,26 @@ class PlanController extends Controller
      */
     public function index()
     {
-       /* $plan = DB::table('plan')
-                      ->join('riesgo','riesgo.idRiesgo', '=','plan.idRiesgo')
-                      ->join('opcion_tratamiento','opcion_tratamiento.idOpcionTratamiento','=','plan.idOpcionTratamiento')
-                      ->select('riesgo.nombre as riesgo','opcion_tratamiento.nombre as opcion','accion','responsable','duracion','criterio','idPlan')
-                      ->orderBy('idPlan','desc')
-                      ->get();*/
+        
+        $riesgo = Riesgo::select('nombre','idRiesgo')->pluck('nombre','idRiesgo');
 
-        return view('plan.index');
+        return view('plan.index')->with('riesgo',$riesgo);
     }
 
-
-    public function listall(){
+    public function listar($idRiesgo){
 
         $plan = DB::table('plan')
                       ->join('riesgo','riesgo.idRiesgo', '=','plan.idRiesgo')
                       ->join('opcion_tratamiento','opcion_tratamiento.idOpcionTratamiento','=','plan.idOpcionTratamiento')
                       ->select('riesgo.nombre as riesgo','opcion_tratamiento.nombre as opcion','accion','responsable','duracion','criterio','idPlan')
+                      ->where('plan.idRiesgo','=',$idRiesgo)
                       ->orderBy('idPlan','desc')
                       ->get();
 
-        return view('plan.listall');
+        return view('plan.listar')->with('plan',$plan);
+
     }
+    
     /**
      * Show the form for creating a new resource.
      *
