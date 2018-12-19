@@ -12,9 +12,9 @@
             <th scope="col">Activo</th>
             <th scope="col">Riesgo</th>
             <th scope="col">Descripcion</th>
-            <th scope="col">Probabilidad</th>
-            <th scope="col">Impacto</th>
-            <th scope="col">Nivel</th>
+            <th scope="col">%Probabilidad</th>
+            <th scope="col">%Impacto</th>
+            <th scope="col">Nivel de riesgo</th>
             <th scope="col">Accion</th>
         </thead>
         <tbody>

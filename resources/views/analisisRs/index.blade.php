@@ -27,8 +27,8 @@
     <table class="table table-hover table-condensed table-striped table-bordered" id="exTable">
         <thead class="tableThead">
             <th scope="col">Riesgo</th>
-            <th scope="col">Impacto</th>
-            <th scope="col">Probabilidad</th>
+            <th scope="col">%Impacto</th>
+            <th scope="col">%Probabilidad</th>
             <th scope="col">Acciones</th>
         </thead>
         <tbody>
