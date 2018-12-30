@@ -40,7 +40,8 @@
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{route('probabilidad.index')}}"><i class="fa fa-circle-o"></i> Probabilidad</a></li>
+                   <!-- <li><a href="{{route('probabilidad.index')}}"><i class="fa fa-circle-o"></i> Probabilidad</a></li>-->
+                    <li><a href="{{route('impacto.index')}}"><i class="fa fa-circle-o"></i> Impacto</a></li>
                     <li><a href="{{route('riesgo.index')}}"><i class="fa fa-circle-o"></i> Identificacion del riesgo</a></li>
                     <li><a href="{{route('analisisRs.index')}}"><i class="fa fa-circle-o"></i> Analisis del riesgo</a></li>
                     <li><a href="{{route('evaluacionRs.index')}}"><i class="fa fa-circle-o"></i> Evaluacion del riesgo</a></li>

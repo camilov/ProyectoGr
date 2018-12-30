@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 
 /*Route::resource([
@@ -23,6 +23,7 @@ Route::get('/', function () {
 ]);*/
 
 
+Route::resource('impacto','ImpactoController');
 
 Route::resource('probabilidad','ProbabilidadController');
 
@@ -102,3 +103,7 @@ Route::get('plan/{idRiesgo},{idOpcionTratamiento}/create',[
 			'as' => 'plan.create']);
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
