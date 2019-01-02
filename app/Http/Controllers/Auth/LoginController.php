@@ -19,21 +19,26 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+    
+    // funcion que solo permite dejar pasar al usuario a la rutas si hace sesion
     public function __construct()
     {
-        $this->middleware('guest')->except('logout');
+        //$this->middleware('guest')->except('logout');
+
+        $this->middleware('guest', ['only' => 'showLoginForm']);
+    }
+
+
+    // retorna a vista login
+    public function showLoginForm(){
+
+        return view('auth/login');
+    }
+
+
+    // funcion para inciar sesion
+    public function login(){
+
+            return redirect()->route('activo.index');        
     }
 }

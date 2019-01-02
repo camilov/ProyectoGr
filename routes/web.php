@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('auth/login');
 });
 
+
+Auth::routes();
 /*Route::resource([
 	'actividad'=>'ActividadController',
 	'responsabilidad'=>'ResponsabilidadController',
@@ -101,9 +103,5 @@ Route::get('plan/{ID}/destroy',[
 Route::get('plan/{idRiesgo},{idOpcionTratamiento}/create',[
 		    'uses' =>'PlanController@create', 
 			'as' => 'plan.create']);
-
-
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

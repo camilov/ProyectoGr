@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Probabilidad;
+use App\Riesgo;
 
 class ProbabilidadController extends Controller
 {
