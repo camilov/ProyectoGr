@@ -39,6 +39,6 @@ class LoginController extends Controller
     // funcion para inciar sesion
     public function login(){
 
-            return redirect()->route('activo.index');        
+           return view('welcome');// return redirect()->route('welcome');        
     }
 }
