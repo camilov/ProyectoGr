@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+//auth/login
 
 Auth::routes();
 /*Route::resource([

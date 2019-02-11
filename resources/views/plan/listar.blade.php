@@ -4,7 +4,7 @@
             <th scope="col">Opcion de tratamiento</th>
             <th scope="col">Accion</th>
             <th scope="col">Responsable</th>
-            <th scope="col">Duracion</th>
+            <th scope="col">Duracion(Dias)</th>
             <th scope="col">Criterio de exito </th>
             <th scope="col">Acciones</th>
         </thead>

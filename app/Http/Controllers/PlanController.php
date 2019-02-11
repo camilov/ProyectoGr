@@ -21,7 +21,11 @@ class PlanController extends Controller
     public function index()
     {
         
-        $riesgo = Riesgo::select('nombre','idRiesgo')->pluck('nombre','idRiesgo');
+        $riesgo = 
+        Riesgo::join('plan','plan.idRiesgo','=','riesgo.idRiesgo')
+              ->select('riesgo.nombre','riesgo.idRiesgo')->pluck('riesgo.nombre',
+                       'riesgo.idRiesgo');
+        
 
         return view('plan.index')->with('riesgo',$riesgo);
     }
