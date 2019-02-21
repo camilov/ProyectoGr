@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class TratamientoRequest extends FormRequest
+class ControlesRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,13 +24,15 @@ class TratamientoRequest extends FormRequest
     public function rules()
     {
         return [
-            'idRiesgo' => 'unique:tratamiento'
+            'idControl' => 'unique:Controles'
         ];
     }
+
+
     public function messages()
     {
         return [
-            'idRiesgo.unique' => 'Ya se ha registrado un plan al riesgo'  
+            'idControl.unique' => 'Ya se ha asignado el control a este riesgo'  
         ];
     }
 }

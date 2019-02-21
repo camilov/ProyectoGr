@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Controles;
 use App\Control;
 use DB;
+use App\Http\Requests\ControlesRequest;
 
 
 class ControlesController extends Controller
@@ -30,8 +31,13 @@ class ControlesController extends Controller
     public function create($idRiesgo,$idOpcionTratamiento)
     {
        // dd($idRiesgo);
-        $control = Control::select('nombre','idControl')->pluck('nombre','idControl');
-
+        //$control = Control::select('nombre','idControl')->pluck('nombre','idControl');
+        $control = DB::table('control')
+                      ->join('controles','controles.idControl', '!=','control.idControl')
+                      ->select('control.nombre as nombre')
+                      ->where('controles.idRiesgo','=',$idRiesgo)
+                      //->orderBy('idControl','desc')
+                      ->get();
 
         return view('controles.create')->with('control',$control)->with('idRiesgo',$idRiesgo)->with('idOpcionTratamiento',$idOpcionTratamiento);
     }
@@ -42,8 +48,9 @@ class ControlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ControlesRequest $request)
     {
+       // dd($request);
         $controles = new Controles($request->all());
         $controles->save();
 

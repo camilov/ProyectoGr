@@ -15,10 +15,10 @@
           </div>
          
 
-          <div class="form-group">
+         <!-- <div class="form-group">
             {!! Form::label('tipoRiesgo','Tipo de riesgo') !!}
             {!! Form::text('tipoRiesgo',null,['class'=>'form-control','placeholder'=>'Tipo de riesgo','required','style' => 'width:350px']) !!}
-          </div>
+          </div>-->
 
           <div class="form-group">
             {!! Form::label('proceso','Proceso') !!}

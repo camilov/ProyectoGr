@@ -33,7 +33,7 @@
     <table class="table table-hover table-condensed table-striped table-bordered" id="exTable">
         <thead class="tableThead">
             <th scope="col">Activo</th>
-            <th scope="col">Tipo de riesgo</th>
+            <!--<th scope="col">Tipo de riesgo</th>-->
             <th scope="col">Proceso</th>
             <th scope="col">Nombre</th>
             <th scope="col">Descripcion</th>
@@ -47,7 +47,7 @@
             @foreach($riesgo as $riesgos)
                 <tr>
                     <td>{{$riesgos->activo->nombre}}</td>
-                    <td>{{$riesgos->tipoRiesgo}}</td>
+                    <!--<td>{{$riesgos->tipoRiesgo}}</td>-->
                     <td>{{$riesgos->proceso}}</td>
                     <td>{{$riesgos->nombre}}</td>
                     <td>{{$riesgos->descripcion}}</td>
