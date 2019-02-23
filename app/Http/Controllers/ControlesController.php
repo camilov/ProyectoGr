@@ -31,13 +31,13 @@ class ControlesController extends Controller
     public function create($idRiesgo,$idOpcionTratamiento)
     {
        // dd($idRiesgo);
-        //$control = Control::select('nombre','idControl')->pluck('nombre','idControl');
-        $control = DB::table('control')
-                      ->join('controles','controles.idControl', '!=','control.idControl')
-                      ->select('control.nombre as nombre')
-                      ->where('controles.idRiesgo','=',$idRiesgo)
+        $control = Control::select('nombre','idControl')->pluck('nombre','idControl');
+       /* $control = DB::table('control')
+                      ->join('controles','controles.idControl', '=','control.idControl')
+                      ->select('control.nombre')
+                      //->where('controles.idRiesgo','=',$idRiesgo)
                       //->orderBy('idControl','desc')
-                      ->get();
+                      ->get();*/
 
         return view('controles.create')->with('control',$control)->with('idRiesgo',$idRiesgo)->with('idOpcionTratamiento',$idOpcionTratamiento);
     }

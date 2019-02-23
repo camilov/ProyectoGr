@@ -10,8 +10,8 @@
         
           
 	      <div class="form-group">
-            {!! Form::label('rol','Rol') !!}
-            {!! Form::select('rol',$rol,null,['class'=>'form-control','placeholder'=>'Descripcion','required','style' => 'width:350px']) !!}
+            {!! Form::label('idRol','Rol') !!}
+            {!! Form::select('idRol',$rol,null,['class'=>'form-control','placeholder'=>'Descripcion','required','style' => 'width:350px']) !!}
           </div>
 
           <div class="form-group">

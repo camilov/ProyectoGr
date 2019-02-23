@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Impacto extends Model
 {
     /**
-     * The attributes that are mass assignable.
+     * The attributes that are mass assignable,'idRol'.
      *
      * @var array
      */
@@ -16,7 +16,7 @@ class Impacto extends Model
     protected $primaryKey='idImpacto';
 
     protected $fillable = [
-        'idImpacto','descripcion'
+        'idImpacto','descripcion','idRol'
     ];
 
     /**

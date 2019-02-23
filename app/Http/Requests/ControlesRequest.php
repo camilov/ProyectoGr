@@ -24,7 +24,7 @@ class ControlesRequest extends FormRequest
     public function rules()
     {
         return [
-            'idControl' => 'unique:Controles'
+            'idControl' => 'unique:Controles,idRiesgo'
         ];
     }
 

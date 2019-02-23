@@ -14,7 +14,7 @@ class Actividad extends Model
 
     protected $table='actividad';
     protected $primaryKey='idActividad';
-   // protected $timestamps=false;
+    public $timestamps=false;
 
     protected $fillable = [
         'idActividad','descripcion','idRol'

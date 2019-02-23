@@ -1,7 +1,7 @@
 <header class="main-header">
     <!-- Logo -->
   <!--  <a href="{!! url('/dashboard-v1') !!}" class="logo">-->
-    <p class="logo" ><span class="logo-lg"><b>GESTION DE RIESGOS</b></span></p>
+    <p class="logo" ><span class="logo-lg"><b>GESTION</b></span></p>
         <!-- logo for regular state and mobile devices -->
         
    <!-- </a>-->
@@ -15,7 +15,7 @@
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
                 <!-- Notifications: style can be found in dropdown.less -->
-                
+               
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
