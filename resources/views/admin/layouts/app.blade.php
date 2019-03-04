@@ -62,9 +62,6 @@
                 </div>
             </div>
         </div>
-       <!-- <div>
-            @include('admin.partials.footer')
-        </div>-->
     </div>
 </section>
 

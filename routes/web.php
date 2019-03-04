@@ -12,17 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth/login');
 });
 //auth/login
 
 Auth::routes();
-/*Route::resource([
-	'actividad'=>'ActividadController',
-	'responsabilidad'=>'ResponsabilidadController',
-	'rol'=>'RolController',
-	'user'=>'UserController',
-]);*/
 
 
 Route::resource('impacto','ImpactoController');

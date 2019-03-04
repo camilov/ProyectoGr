@@ -4,8 +4,5 @@
     
 @section('content')
    
-   <div class="container">
-   	<p>asdas</p>
-   </div>
    
 @endsection

@@ -51,8 +51,8 @@
                     <td>{{$users->rol->descripcion}}</td>
                     <td>{{$users->email}}</td>
                     <td>
-                    <a href="{{route('user.edit',$users->idUsuario)}}" class="btn btn-warning glyphicon glyphicon-pencil"></a>
-                    <a href="{{route('user.destroy',$users->idUsuario)}}" onclick="return confirm('¿Seguro que deseas eliminar el usuario?')" class="btn btn-danger glyphicon glyphicon-trash"></a>
+                    <a href="{{route('user.edit',$users->id)}}" class="btn btn-warning glyphicon glyphicon-pencil"></a>
+                    <a href="{{route('user.destroy',$users->id)}}" onclick="return confirm('¿Seguro que deseas eliminar el usuario?')" class="btn btn-danger glyphicon glyphicon-trash"></a>
                     </td>
                 </tr>
                 @endforeach
