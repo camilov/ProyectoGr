@@ -21,9 +21,35 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+    /**
+     * Where to redirect users after login.
+     *
+     * @var string
+     */
+    //protected $redirectTo ='';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+
+   public function redirectTo(){
+
+        return '/home';
+
+    }
     
-    // funcion que solo permite dejar pasar al usuario a la rutas si hace sesion
+
+
     public function __construct()
+    {
+        $this->middleware('guest')->except('logout');
+    }
+
+   
+    // funcion que solo permite dejar pasar al usuario a la rutas si hace sesion
+    /*public function __construct()
     {
         //$this->middleware('guest')->except('logout');
 
@@ -42,5 +68,5 @@ class LoginController extends Controller
     public function login(){
 
            return view('welcome');// return redirect()->route('welcome');        
-    }
+    }*/
 }

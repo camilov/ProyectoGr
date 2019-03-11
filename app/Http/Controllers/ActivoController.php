@@ -28,7 +28,7 @@ class ActivoController extends Controller
      */
     public function create()
     {
-        $user = User::select('name','idUsuario')->pluck('name','idUsuario');
+        $user = User::select('name','id')->pluck('name','id');
 
         return view('activo.create')->with('user',$user);
     }
@@ -51,7 +51,7 @@ class ActivoController extends Controller
         $activo->codigo = $request->input('codigo');
         $activo->responsable = $request->input('responsable');
         $activo->tipoActivo = $request->input('tipoActivo');
-        $activo->idUsuario = $request->input('idUsuario');
+        $activo->idUsuario = $request->input('id');
         $activo->imagen = $name;
         $activo->save();
         $request->session()->flash('mensaje', 'Actvivo Creado Con exito');

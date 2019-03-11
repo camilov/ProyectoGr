@@ -31,7 +31,7 @@
           
           <div class="form-group">
             {!! Form::label('idUsuario','Usuario') !!}
-            {!! Form::select('idUsuario',$user,null,['class'=>'form-control','placeholder'=>'Seleccione usuario','required','style' => 'width:350px']) !!}
+            {!! Form::select('id',$user,null,['class'=>'form-control','placeholder'=>'Seleccione usuario','required','style' => 'width:350px']) !!}
           </div>
           
           <div class="form-group">

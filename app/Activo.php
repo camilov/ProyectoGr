@@ -24,7 +24,7 @@ class Activo extends Model
 
     public function User()
     {
-        return $this->belongsTo('App\User','idUsuario');
+        return $this->belongsTo('App\User','id');
     }
 
 

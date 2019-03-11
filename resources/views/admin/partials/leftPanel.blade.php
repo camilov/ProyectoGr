@@ -5,6 +5,10 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">Menu de navegacion</li>
+            <?php
+                $user = Auth::user()->idRol;
+                if ($user == 1){
+            ?>
             <li class="active treeview menu-open">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Admin</span>
@@ -19,6 +23,9 @@
                     <li class="active"><a href="{{route('responsabilidad.index')}}"><i class="fa fa-circle-o"></i> Responsabilidades</a></li>
                 </ul>
             </li>
+            <?php
+                }
+            ?>
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-pie-chart"></i>

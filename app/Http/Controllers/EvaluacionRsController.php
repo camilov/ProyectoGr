@@ -29,7 +29,7 @@ class EvaluacionRsController extends Controller
                     ->orderBy('nivel','desc')
                     ->get();
 
-                    dd($riesgo);
+                   // dd($riesgo);
     	return view('evaluacionRs.index')->with('riesgo',$riesgo);
     }
 
