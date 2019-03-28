@@ -61,7 +61,7 @@
                     <td>{{$controles->idControlL}}</td>
                     <td>{{$controles->nombre}}</td>
                     <td>{{$controles->descripcion}}</td>
-                    <td {{$controles->acciones}}></td>
+                    <td>{{$controles->acciones}}</td>
                     <td>
                     <a href="{{route('control.edit',$controles->idControl)}}" class="btn btn-warning glyphicon glyphicon-pencil"></a>
                     <a href="{{route('control.destroy',$controles->idControl)}}" onclick="return confirm('¿Seguro que deseas eliminar el control?')" class="btn btn-danger glyphicon glyphicon-trash"></a>

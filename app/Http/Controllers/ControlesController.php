@@ -13,8 +13,8 @@ class ControlesController extends Controller
 {
     /**
      * Display a listing of the resource.
-     *
      * @return \Illuminate\Http\Response
+     *
      */
     public function index()
     {
@@ -31,14 +31,15 @@ class ControlesController extends Controller
     public function create($idRiesgo,$idOpcionTratamiento)
     {
        // dd($idRiesgo);
-        $control = Control::select('nombre','idControl')->pluck('nombre','idControl');
+        $control = Control::select('nombre','idControl')->pluck('nombre','idControl')->distinct();
        /* $control = DB::table('control')
-                      ->join('controles','controles.idControl', '=','control.idControl')
-                      ->select('control.nombre')
+                      //->join('controles','controles.idControl', '=','control.idControl')
+                      ->select('control.nombre','control.idControl')
                       //->where('controles.idRiesgo','=',$idRiesgo)
                       //->orderBy('idControl','desc')
+                      ->distinct()
                       ->get();*/
-
+       // dd($control);
         return view('controles.create')->with('control',$control)->with('idRiesgo',$idRiesgo)->with('idOpcionTratamiento',$idOpcionTratamiento);
     }
 
