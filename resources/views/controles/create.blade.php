@@ -23,6 +23,14 @@
             {!! Form::select('idControl',$control,null,['class'=>'form-control','placeholder'=>'Seleccione control','required','style' => 'width:350px']) !!}
           </div>
           <div class="form-group">
+            {!! Form::label('accion','Accion') !!}
+            {!! Form::select('idAccion',null,['class'=>'form-control','placeholder'=>'Seleccione Accion','required','style' => 'width:350px']) !!}
+          </div>
+          <div class="form-group">
+            {!! Form::label('control','Control') !!}
+            {!! Form::select('idControl',$control,null,['class'=>'form-control','placeholder'=>'Seleccione control','required','style' => 'width:350px']) !!}
+          </div>
+          <div class="form-group">
             {!! Form::hidden('idRiesgo',$idRiesgo,null,['class'=>'form-control','required','style' => 'width:350px']) !!}
           </div>
           <div class="form-group">
