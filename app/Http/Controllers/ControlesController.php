@@ -30,19 +30,22 @@ class ControlesController extends Controller
      */
     public function create($idRiesgo,$idOpcionTratamiento)
     {
-       // dd($idRiesgo);
-        $control = Control::select('nombre','idControl')->pluck('nombre','idControl')->distinct();
-       /* $control = DB::table('control')
-                      //->join('controles','controles.idControl', '=','control.idControl')
-                      ->select('control.nombre','control.idControl')
-                      //->where('controles.idRiesgo','=',$idRiesgo)
-                      //->orderBy('idControl','desc')
-                      ->distinct()
-                      ->get();*/
-       // dd($control);
+       
+        $control = Control::select('nombre','idControl')->pluck('nombre','idControl');
+     
         return view('controles.create')->with('control',$control)->with('idRiesgo',$idRiesgo)->with('idOpcionTratamiento',$idOpcionTratamiento);
     }
 
+    public function acciones($id){
+
+        $acciones = Control::select('acciones')->where('idControl','=',$id)->get();
+        dd($acciones);
+        return  Control::select('acciones')->where('idControl','=',$id)->get();
+
+    }
+
+    
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -51,7 +54,7 @@ class ControlesController extends Controller
      */
     public function store(ControlesRequest $request)
     {
-       // dd($request);
+       
         $controles = new Controles($request->all());
         $controles->save();
 

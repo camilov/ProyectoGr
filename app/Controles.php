@@ -27,4 +27,6 @@ class Controles extends Model
         return $this->belongsTo('App\Control','idControl');
     }
 
+    
+
 }

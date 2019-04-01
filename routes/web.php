@@ -99,3 +99,5 @@ Route::get('plan/{idRiesgo},{idOpcionTratamiento}/create',[
 			'as' => 'plan.create']);
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('acciones/{id}', 'ControlesController@acciones');
