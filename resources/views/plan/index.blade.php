@@ -42,6 +42,7 @@
      $(document).ready(function(){
             $("#idRiesgo").change(function(){
                 var valor = $(this).val();
+                console.log(valor);
                 listTar(valor);
                 }); 
       });
@@ -58,6 +59,7 @@
                         $("#list-product").html("Procesando, espere por favor...");
                 },
           success: function(data){
+            console.log(data);
             $('#list-product').empty().html(data);
           }
         });

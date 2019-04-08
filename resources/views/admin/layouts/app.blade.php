@@ -71,10 +71,11 @@
 <script src="{{ asset('js/dashboard.js') }}"></script>
 <script src="{{ asset('js/demo.js') }}"></script>
 <script src="{{ asset('js/adminlte.min.js') }}"></script>
-<script src="{{ asset('js/bootstrap3-wysihtml5.all.min.js') }}"></script>
+
 <script src="{{ asset('js/jquery-jvectormap-1.2.2.min.js') }}"></script>
 <script src="{{ asset('js/jquery-jvectormap-world-mill-en.js') }}"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+<script src="{{ asset('js/bootstrap3-wysihtml5.all.min.js') }}"></script>
 <script>
     $.widget.bridge('uibutton', $.ui.button);
 </script>

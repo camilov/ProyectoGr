@@ -76,6 +76,9 @@ Route::get('control/{ID}/destroy',[
 
 Route::resource('controles','ControlesController');
 
+Route::get('acciones/{ID}', 'ControlesController@acciones');
+Route::get('sacarid/{ID}','ControlesController@sacarid');
+
 Route::get('controles/{idRiesgo},{idOpcionTratamiento}/create',[
 		    'uses' =>'ControlesController@create', 
 			'as' => 'controles.create']);
@@ -84,10 +87,6 @@ Route::get('controles/{idRiesgo},{idOpcionTratamiento}/create',[
 Route::resource('plan','PlanController');
 
 Route::get('listar/{ID}','PlanController@listar');
-/*Route::get('listar/{ID}/listar',[
-		   'uses' => 'PlanController@listar',
-		   'as'	  => 'plan.listar'
-		   ]);*/
 
 Route::get('plan/{ID}/destroy',[
 	       'uses' => 'PlanController@destroy',
@@ -99,5 +98,3 @@ Route::get('plan/{idRiesgo},{idOpcionTratamiento}/create',[
 			'as' => 'plan.create']);
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('acciones/{id}', 'ControlesController@acciones');

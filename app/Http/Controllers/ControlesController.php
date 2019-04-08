@@ -32,20 +32,24 @@ class ControlesController extends Controller
     {
        
         $control = Control::select('nombre','idControl')->pluck('nombre','idControl');
-     
+
+
         return view('controles.create')->with('control',$control)->with('idRiesgo',$idRiesgo)->with('idOpcionTratamiento',$idOpcionTratamiento);
     }
 
+    
     public function acciones($id){
-
-        $acciones = Control::select('acciones')->where('idControl','=',$id)->get();
-        dd($acciones);
-        return  Control::select('acciones')->where('idControl','=',$id)->get();
+       
+        return  Control::select('acciones')->where('idControlL','=',$id)->get();
 
     }
+    
+    public function sacarid($id){
 
-    
-    
+        return Control::select('idControlL')->where('idControl','=',$id)->get();
+    }
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -56,6 +60,7 @@ class ControlesController extends Controller
     {
        
         $controles = new Controles($request->all());
+        dd($controles);
         $controles->save();
 
         return redirect()->route('controles.index');
