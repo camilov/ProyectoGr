@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Controles;
 use App\Control;
+use App\Acciones;
 use DB;
 use App\Http\Requests\ControlesRequest;
 
@@ -56,11 +57,19 @@ class ControlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ControlesRequest $request)
+    public function store(Request $request)
     {
-       
-        $controles = new Controles($request->all());
-        dd($controles);
+        
+        $acciones = new Acciones();
+        $acciones->idControlL = $request->input('idControlL');
+        $acciones->accion = $request->input('accion');
+        $acciones->save();
+
+        $controles = new Controles();   
+        $controles->idControl = $request->input('idControl');
+        $controles->idRiesgo = $request->input('idRiesgo');   
+        $controles->idOpcionTratamiento = $request->input('idOpcionTratamiento');
+        $controles->idControlL = $request->input('idControlL');
         $controles->save();
 
         return redirect()->route('controles.index');

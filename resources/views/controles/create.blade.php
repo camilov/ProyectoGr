@@ -34,21 +34,23 @@
           </div>
 
           <div class="form-group">
-            <text name="idControlL" id="idControlL" class="form-control" style="visibility:hidden">
+            <text name="idControlL" id="idControlL" class="form-control">
             </text>
           </div>
+
           
           <div class="form-group">
-            {!! Form::text('idControlL2',null,['id'=>'idControlL2','class'=>'form-control','required','style' => 'width:350px']) !!}
+            {!! Form::hidden('accion',null,['id'=>'accion','class'=>'form-control','required','style' => 'width:350px']) !!}
           </div>
 
           <div class="form-group">
             {!! Form::hidden('idRiesgo',$idRiesgo,null,['class'=>'form-control','required','style' => 'width:350px']) !!}
           </div>
+          
+
           <div class="form-group">
             {!! Form::hidden('idOpcionTratamiento',$idOpcionTratamiento,null,['class'=>'form-control','required','style' => 'width:350px']) !!}
           </div>
-
           <div class="form-group">
                 {!! Form::submit('Registrar',['class'=>'btn btn-primary'])!!}
             
@@ -71,7 +73,7 @@
       });
 
       $(document).on('change','#productos',function(){
-             $('#idControlL2').val($("#productos option:selected").text()); 
+             $('#accion').val($("#productos option:selected").text()); 
              console.log($("#productos option:selected").text());
       });
 
@@ -103,7 +105,7 @@
           acciones(valor);
      };
 
-      function acciones(valor){
+    function acciones(valor){
 
           var valor1 = valor;
           console.log(valor1);

@@ -11,7 +11,7 @@ class Controles extends Model
     public $timestamps=false;
 
     protected $fillable = [
-        'idControl','idRiesgo','idOpcionTratamiento'
+        'idControl','idRiesgo','idOpcionTratamiento','idControlL'
     ];
 
     /**
