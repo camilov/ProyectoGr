@@ -33,12 +33,12 @@
             </select>
           </div>
 
+          
           <div class="form-group">
-            <text name="idControlL" id="idControlL" class="form-control">
-            </text>
+            <textarea name="idControlL" id="idControlL" class="form-control" style="visibility:hidden;"></textarea>
           </div>
 
-          
+
           <div class="form-group">
             {!! Form::hidden('accion',null,['id'=>'accion','class'=>'form-control','required','style' => 'width:350px']) !!}
           </div>
@@ -66,7 +66,6 @@
              var valor = $(this).val();
             
              sacarid(valor,function(resultado){
-
                 console.log(resultado.trim());
                 acciones(resultado.trim());
              });
@@ -93,7 +92,7 @@
             for (var i=0; i<data.length;i++)
               controlL+= data[i].idControlL;
           $("#idControlL").html(controlL);
-          var campo = $('#idControlL').text();
+         // var campo = $('#idControlL').text();
           callback(controlL); 
           }
         });
