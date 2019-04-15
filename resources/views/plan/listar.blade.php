@@ -2,6 +2,9 @@
         <thead class="tableThead">
             <th scope="col">Riesgo</th>
             <th scope="col">Opcion de tratamiento</th>
+            <th scope="col">Id Control</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Objetivo</th>
             <th scope="col">Accion</th>
             <th scope="col">Responsable</th>
             <th scope="col">Duracion(Dias)</th>
@@ -13,7 +16,10 @@
                 <tr>
                     <td>{{$planes->riesgo}}</td>
                     <td>{{$planes->opcion}}</td>
-                    <td>-{{$planes->accion}}</td>
+                    <td>{{$planes->idControlL}}</td>
+                    <td>{{$planes->control}}</td>
+                    <td>{{$planes->objetivo}}</td>
+                    <td>{{$planes->accion}}</td>
                     <td>{{$planes->responsable}}</td>
                     <td>{{$planes->duracion}}</td>
                     <td>{{$planes->criterio}}</td>

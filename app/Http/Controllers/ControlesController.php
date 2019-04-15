@@ -20,14 +20,13 @@ class ControlesController extends Controller
     public function index($idRiesgo)
     {
         
-        //$controles = Controles::orderBy('idControles','ASC')->paginate(5);
         $controles = DB::table('controles')->distinct()
                         ->join('control','control.idControlL','=','controles.idControlL')
                         ->join('acciones','acciones.idControlL','=','controles.idControlL')
                         ->select('control.nombre as nombre','acciones.accion as accion','controles.idRiesgo as idRiesgo','controles.idOpcionTratamiento as idOpcionTratamiento')
                         ->where('controles.idRiesgo','=',$idRiesgo)
                         ->get();
-      //  dd($controles);
+
         return view('controles.index')->with('controles',$controles);
     }
 

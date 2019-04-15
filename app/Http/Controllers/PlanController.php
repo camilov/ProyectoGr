@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use App\Plan;
 use App\Riesgo;
 use App\Tratamiento;
@@ -35,11 +36,11 @@ class PlanController extends Controller
         $plan = DB::table('plan')
                       ->join('riesgo','riesgo.idRiesgo', '=','plan.idRiesgo')
                       ->join('opcion_tratamiento','opcion_tratamiento.idOpcionTratamiento','=','plan.idOpcionTratamiento')
-                      ->select('riesgo.nombre as riesgo','opcion_tratamiento.nombre as opcion','accion','responsable','duracion','criterio','idPlan')
+                      ->select('riesgo.nombre as riesgo','opcion_tratamiento.nombre as opcion','idControlL','plan.nombre as control','plan.descripcion as objetivo','accion','responsable','duracion','criterio','idPlan')
                       ->where('plan.idRiesgo','=',$idRiesgo)
                       ->orderBy('idPlan','desc')
                       ->get();
-
+      //  dd($idRiesgo);
         return view('plan.listar')->with('plan',$plan);
 
     }
@@ -51,15 +52,13 @@ class PlanController extends Controller
      */
     public function create($idRiesgo,$idOpcionTratamiento)
     {
-        //$accion = DB::table('control')->select('nombre')->where('idRiesgo','=', $idRiesgo)->get();
         
-       $accion = DB::table('controles')
-                      ->join('control','control.idControl', '=','controles.idControl')
-                      ->select('control.descripcion as desc')
-                      ->where('controles.idRiesgo','=',$idRiesgo)
-                      ->orderBy('idControles','desc')
-                      ->get();
-        //dd($accion);
+       $accion = DB::table('controles')->distinct()
+                        ->join('control','control.idControlL','=','controles.idControlL')
+                        ->join('acciones','acciones.idControlL','=','controles.idControlL')
+                        ->select('acciones.accion as accion','control.idControlL','control.nombre','control.descripcion')
+                        ->where('controles.idRiesgo','=',$idRiesgo)
+                        ->get();
 
         return view('plan.create')->with('accion',$accion)->with('idRiesgo',$idRiesgo)->with('idOpcionTratamiento',$idOpcionTratamiento);
         
