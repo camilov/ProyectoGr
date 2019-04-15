@@ -17,10 +17,17 @@ class ControlesController extends Controller
      * @return \Illuminate\Http\Response
      *
      */
-    public function index()
+    public function index($idRiesgo)
     {
         
-        $controles = Controles::orderBy('idControles','ASC')->paginate(5);
+        //$controles = Controles::orderBy('idControles','ASC')->paginate(5);
+        $controles = DB::table('controles')->distinct()
+                        ->join('control','control.idControlL','=','controles.idControlL')
+                        ->join('acciones','acciones.idControlL','=','controles.idControlL')
+                        ->select('control.nombre as nombre','acciones.accion as accion','controles.idRiesgo as idRiesgo','controles.idOpcionTratamiento as idOpcionTratamiento')
+                        ->where('controles.idRiesgo','=',$idRiesgo)
+                        ->get();
+      //  dd($controles);
         return view('controles.index')->with('controles',$controles);
     }
 
@@ -72,7 +79,9 @@ class ControlesController extends Controller
         $controles->idControlL = $request->input('idControlL');
         $controles->save();
 
-        return redirect()->route('controles.index');
+        $idRiesgo = $request->input('idRiesgo'); ;
+       // dd($request->input('idRiesgo'));
+        return redirect()->route('controles.index',[$idRiesgo]);
     }
 
     /**

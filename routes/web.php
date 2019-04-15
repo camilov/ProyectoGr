@@ -76,6 +76,10 @@ Route::get('control/{ID}/destroy',[
 
 Route::resource('controles','ControlesController');
 
+Route::get('controles/{idRiesgo}/index',[
+		    'uses' =>'ControlesController@index', 
+			'as' => 'controles.index']);
+
 Route::get('acciones/{ID}', 'ControlesController@acciones');
 Route::get('sacarid/{ID}','ControlesController@sacarid');
 

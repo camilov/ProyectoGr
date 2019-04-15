@@ -37,7 +37,7 @@ class ControlController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request));
+        //dd($request);
         $control = new Control($request->all());
         $control->save();
         $request->session()->flash('mensaje', 'Control Creado Con exito');
