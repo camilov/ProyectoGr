@@ -7,6 +7,7 @@ use App\AnalisisRs;
 use App\Riesgo;
 use App\Impacto;
 use App\Probabilidad;
+use App\Activo;
 use App\Http\Requests\AnalisisRsRequest;
 
 class AnalisisRsController extends Controller
@@ -30,11 +31,12 @@ class AnalisisRsController extends Controller
      */
     public function create()
     {
+        $activo = Activo::select('nombre','idActivo')->pluck('nombre','idActivo');
         $riesgo = Riesgo::select('nombre','idRiesgo')->pluck('nombre','idRiesgo');
         $impacto = Impacto::select('descripcion','idImpacto')->pluck('descripcion','idImpacto');
         $probabilidad = Probabilidad::select('descripcion','idProbabilidad')->pluck('descripcion','idProbabilidad');
         return view('analisisRs.create')->with('riesgo',$riesgo)->with('impacto',$impacto)
-                   ->with('probabilidad',$probabilidad);
+                   ->with('probabilidad',$probabilidad)->with('activo',$activo);
     }
 
     /**

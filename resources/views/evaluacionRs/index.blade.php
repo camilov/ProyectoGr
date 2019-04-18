@@ -20,7 +20,7 @@
         <tbody>
             @foreach($riesgo as $riesgos)
                 <tr>
-                    <td>{{$riesgos->idActivo}}</td>
+                    <td>{{$riesgos->nomactivo}}</td>
                     <td>{{$riesgos->nombre}}</td>
                     <td>{{$riesgos->riesgoDes}}</td>
                     <td>{{$riesgos->probabilidadDes}}</td>

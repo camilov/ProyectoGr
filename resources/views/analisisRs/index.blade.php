@@ -26,6 +26,7 @@
 	<a href="{{route('analisisRs.create')}}" class="btn btn-info glyphicon glyphicon-plus">Registrar</a><hr>
     <table class="table table-hover table-condensed table-striped table-bordered" id="exTable">
         <thead class="tableThead">
+            <th scope="col">Activo</th>
             <th scope="col">Riesgo</th>
             <th scope="col">%Impacto</th>
             <th scope="col">%Probabilidad</th>
@@ -34,6 +35,7 @@
         <tbody>
             @foreach($analisisRs as $analisisRsS)
                 <tr>
+                    <td>{{$analisisRsS->activo->nombre}}</td>
                     <td>{{$analisisRsS->riesgo->nombre}}</td>
                     <td>{{$analisisRsS->impacto->descripcion}}</td>
                     <td>{{$analisisRsS->probabilidad->descripcion}}</td>

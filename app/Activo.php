@@ -37,6 +37,12 @@ class Activo extends Model
     {
         return $query->where('nombre', 'LIKE', "%$nombre%");
     }
+
+    public function AnalisisRs(){
+
+        return $this->hasMany('App\AnalisisRs');
+    }
+
 }
 
 

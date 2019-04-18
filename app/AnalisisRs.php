@@ -14,7 +14,7 @@ class AnalisisRs extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'idRiesgo','idImpacto','idProbabilidad'
+        'idRiesgo','idImpacto','idProbabilidad','idActivo'
     ];
 
     
@@ -33,6 +33,12 @@ class AnalisisRs extends Model
     {
         return $this->belongsTo('App\Probabilidad','idProbabilidad');
     }
+
+    public function Activo()
+    {
+        return $this->belongsTo('App\Activo','idActivo');
+    }
+
 
 
 }

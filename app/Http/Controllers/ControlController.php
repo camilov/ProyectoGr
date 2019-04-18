@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\control;
-
+use DB;
 class ControlController extends Controller
 {
     /**
@@ -14,9 +14,24 @@ class ControlController extends Controller
      */
     public function index(Request $request)
     {
-        $control = Control::search($request->nombre)->orderBy('idControl','ASC')->paginate(5);
+        $control2 = Control::select('idControlL','idControlL')->pluck('idControlL','idControlL');
 
-        return view('control.index')->with('control',$control); 
+        return view('control.index')->with('control2',$control2); 
+    }
+
+    public function listcont($idControlL){
+
+
+     //   $control = Control::search($request->nombre)->orderBy('idControl','ASC')->paginate(5);
+     //   $control = Control::select('nombre')->where('idControlL','=',$idControlL)->get();
+        $control = DB::table('control')
+                      ->select('idControl','idControlL','nombre','descripcion','acciones')
+                      ->where('idControlL','=',$idControlL)
+                      ->get();
+    //    dd($control);
+        
+        return view('control.listcont')->with('control',$control);
+
     }
 
     /**
@@ -26,7 +41,9 @@ class ControlController extends Controller
      */
     public function create()
     {
-        return view('control.create');
+        
+
+        return view('control.create')->with('control',$control);
     }
 
     /**

@@ -17,6 +17,12 @@
   @endif
 
 	{!! Form::open(['route'=>'analisisRs.store','method'=>'POST']) !!}
+
+          <div class="form-group">
+            {!! Form::label('idActivo','Activo') !!}
+            {!! Form::select('idActivo',$activo,null,['class'=>'form-control','placeholder'=>'Seleccione activo','required','style' => 'width:350px']) !!}
+          </div>
+
           <div class="form-group">
             {!! Form::label('idRiesgo','Riesgo') !!}
             {!! Form::select('idRiesgo',$riesgo,null,['class'=>'form-control','placeholder'=>'Seleccione riesgo','required','style' => 'width:350px']) !!}

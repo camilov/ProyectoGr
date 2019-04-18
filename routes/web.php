@@ -68,6 +68,7 @@ Route::get('tratamiento/{idActivo}/create',[
 
 
 Route::resource('control','ControlController');
+Route::get('listcont/{ID}','ControlController@listcont');
 
 Route::get('control/{ID}/destroy',[
 	       'uses' => 'ControlController@destroy',

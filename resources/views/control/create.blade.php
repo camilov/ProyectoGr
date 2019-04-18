@@ -9,6 +9,11 @@
 	{!! Form::open(['route'=>'control.store','method'=>'POST']) !!}
         
           <div class="form-group">
+            {!! Form::label('control','Control') !!}
+            {!! Form::select('idControlL',$control,null,['id'=> 'idControl','class'=>'form-control','placeholder'=>'Seleccione control','required','style' => 'width:350px']) !!}
+          </div>
+
+          <div class="form-group">
             {!! Form::label('id','Id') !!}
             {!! Form::text('idControlL',null,['class'=>'form-control','placeholder'=>'Ejemplo: A.5.1.1','required','style' => 'width:350px']) !!}
           </div>

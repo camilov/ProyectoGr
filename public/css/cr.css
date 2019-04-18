@@ -43,3 +43,9 @@
 #carder{
 	margin-top: 200px !important;
 }
+
+#exTable2{
+	table-layout: fixed;
+
+    width: 1000px;
+}
