@@ -69,6 +69,7 @@ Route::get('tratamiento/{idActivo}/create',[
 
 Route::resource('control','ControlController');
 Route::get('listcont/{ID}','ControlController@listcont');
+Route::get('obtenerid/{ID}','ControlController@obtenerid');
 
 Route::get('control/{ID}/destroy',[
 	       'uses' => 'ControlController@destroy',
@@ -98,7 +99,7 @@ Route::get('plan/{ID}/destroy',[
 	        'as'  => 'plan.destroy'
 	    ]);
 
-Route::get('plan/{idRiesgo},{idOpcionTratamiento}/create',[
+Route::get('plan/{idRiesgo},{idOpcionTratamiento},{idControlL}/create',[
 		    'uses' =>'PlanController@create', 
 			'as' => 'plan.create']);
 

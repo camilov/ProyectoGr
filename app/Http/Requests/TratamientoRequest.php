@@ -4,6 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
+use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
+
 class TratamientoRequest extends FormRequest
 {
     /**
@@ -23,14 +26,19 @@ class TratamientoRequest extends FormRequest
      */
     public function rules()
     {
+        $value = Request::get('idOpcionTratamiento');
+        //dd($value );
         return [
-            'idRiesgo' => 'unique:tratamiento'
+            
+            'idRiesgo' => Rule::unique('tratamiento')->where(function ($query) use ($value) {
+                return $query->where('idOpcionTratamiento', $value);
+            })
         ];
     }
     public function messages()
     {
         return [
-            'idRiesgo.unique' => 'Ya se ha registrado un plan al riesgo'  
+            'idRiesgo' => 'Ya se ha registrado la opcion de tratamiento para el riesgo'  
         ];
     }
 }

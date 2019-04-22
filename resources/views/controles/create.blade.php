@@ -35,7 +35,7 @@
 
           
           <div class="form-group">
-            <textarea name="idControlL" id="idControlL" class="form-control" style="visibility:hidden;"></textarea>
+            <textarea name="idControlL" id="idControlL" class="form-control" style="display:none"></textarea>
           </div>
 
 
@@ -51,6 +51,11 @@
           <div class="form-group">
             {!! Form::hidden('idOpcionTratamiento',$idOpcionTratamiento,null,['class'=>'form-control','required','style' => 'width:350px']) !!}
           </div>
+
+          <div class="form-group">
+            <textarea name="idAccion" id="idAccion" class="form-control"></textarea>
+          </div>
+
           <div class="form-group">
                 {!! Form::submit('Registrar',['class'=>'btn btn-primary'])!!}
             
@@ -72,8 +77,11 @@
       });
 
       $(document).on('change','#productos',function(){
-             $('#accion').val($("#productos option:selected").text()); 
+             $('#accion').val($("#productos option:selected").text());
+
              console.log($("#productos option:selected").text());
+             console.log($("#productos").val());
+             $("#idAccion").html($("#productos").val());
       });
 
 
@@ -118,7 +126,7 @@
             console.log(data);
             var producto_select ='<option value="">Seleccione Accion</option>';
             for (var i=0; i<data.length;i++)
-              producto_select+='<option value="'+i+'">'+data[i].acciones+'</option>';
+              producto_select+='<option value="'+data[i].idAccion+'">'+data[i].acciones+'</option>';
             $("#productos").html(producto_select);
             console.log(producto_select);
 

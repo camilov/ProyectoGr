@@ -17,7 +17,7 @@ class Plan extends Model
     public $timestamps=false;
 
     protected $fillable = [
-        'idRiesgo','idOpcionTratamiento','accion','responsable','duracion','criterio','idControlL','nombre','descripcion'
+        'idRiesgo','idOpcionTratamiento','responsable','duracion','criterio','idControlL'
     ];
 
     /**

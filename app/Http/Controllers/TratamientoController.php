@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Tratamiento;
 use App\Riesgo;
 use App\opcionTratamiento;
-//use App\Http\Requests\TratamientoRequest;
+use App\Http\Requests\TratamientoRequest;
 
 
 
@@ -41,7 +41,7 @@ class TratamientoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(/*TratamientoRequest*/Request $request)
+    public function store(TratamientoRequest $request)
     {
         $tratamiento = new Tratamiento($request->all());
         $tratamiento->save();

@@ -17,13 +17,11 @@
 	<a href="{{route('rol.create')}}" class="btn btn-info">Registrar nueva rol</a><hr>
     <table class="table table-hover table-condensed table-striped table-bordered" id="exTable">
         <thead class="tableThead">
-            <th scope="col">#</th>
             <th scope="col">Descripcion</th>
         </thead>
         <tbody>
             @foreach($rol as $roles)
                 <tr>
-                    <td>{{$roles->idRol}}</td>
                     <td>{{$roles->descripcion}}</td>
                 </tr>
                 @endforeach

@@ -11,6 +11,6 @@ class Acciones extends Model
     public $timestamps=false;
 
     protected $fillable = [
-        'idControlL','accion'
+        'idControlL','accion','idAccion','idRiesgo'
     ];
 }

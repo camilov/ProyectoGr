@@ -27,20 +27,23 @@ class PlanController extends Controller
               ->select('riesgo.nombre','riesgo.idRiesgo')->pluck('riesgo.nombre',
                        'riesgo.idRiesgo');
         
-
         return view('plan.index')->with('riesgo',$riesgo);
     }
 
     public function listar($idRiesgo){
 
-        $plan = DB::table('plan')
-                      ->join('riesgo','riesgo.idRiesgo', '=','plan.idRiesgo')
-                      ->join('opcion_tratamiento','opcion_tratamiento.idOpcionTratamiento','=','plan.idOpcionTratamiento')
-                      ->select('riesgo.nombre as riesgo','opcion_tratamiento.nombre as opcion','idControlL','plan.nombre as control','plan.descripcion as objetivo','accion','responsable','duracion','criterio','idPlan')
+
+
+        $plan = DB::table('plan')->distinct()
+                    ->join('riesgo as r','r.idRiesgo', '=','plan.idRiesgo')
+                    ->join('opcion_tratamiento','opcion_tratamiento.idOpcionTratamiento','=','plan.idOpcionTratamiento')
+                    ->join('acciones as ac','ac.idRiesgo','=','plan.idRiesgo')
+                    ->join('control','control.idControlL','=','plan.idControlL')
+                    ->select('r.nombre as riesgo','opcion_tratamiento.nombre as opcion','ac.accion as accion','responsable','duracion','criterio','idPlan','control.nombre','control.descripcion')
                       ->where('plan.idRiesgo','=',$idRiesgo)
                       ->orderBy('idPlan','desc')
                       ->get();
-      //  dd($idRiesgo);
+
         return view('plan.listar')->with('plan',$plan);
 
     }
@@ -50,13 +53,11 @@ class PlanController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create($idRiesgo,$idOpcionTratamiento)
+    public function create($idRiesgo,$idOpcionTratamiento,$idControlL)
     {
         
        $accion = DB::table('controles')->distinct()
-                        ->join('control','control.idControlL','=','controles.idControlL')
-                        ->join('acciones','acciones.idControlL','=','controles.idControlL')
-                        ->select('acciones.accion as accion','control.idControlL','control.nombre','control.descripcion')
+                        ->select('controles.idControlL as idControlL')
                         ->where('controles.idRiesgo','=',$idRiesgo)
                         ->get();
 

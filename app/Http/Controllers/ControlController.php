@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\control;
+use App\AccionesP;
 use DB;
 class ControlController extends Controller
 {
@@ -22,16 +23,18 @@ class ControlController extends Controller
     public function listcont($idControlL){
 
 
-     //   $control = Control::search($request->nombre)->orderBy('idControl','ASC')->paginate(5);
-     //   $control = Control::select('nombre')->where('idControlL','=',$idControlL)->get();
         $control = DB::table('control')
                       ->select('idControl','idControlL','nombre','descripcion','acciones')
                       ->where('idControlL','=',$idControlL)
                       ->get();
-    //    dd($control);
         
         return view('control.listcont')->with('control',$control);
 
+    }
+
+    public function obtenerid($id){
+
+        return Control::select('idAccion')->where('idControlL','=',$id)->get();
     }
 
     /**
@@ -43,7 +46,8 @@ class ControlController extends Controller
     {
         
 
-        return view('control.create')->with('control',$control);
+
+        return view('control.create');
     }
 
     /**
@@ -54,9 +58,22 @@ class ControlController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
-        $control = new Control($request->all());
+
+        $control = new Control();
+        $control->idControlL   = $request->input('idControlL');
+        $control->nombre       = $request->input('nombre');
+        $control->descripcion  = $request->input('descripcion');
+        $control->acciones     = $request->input('acciones');
+        $control->idAccion     = $request->input('idAccion');
         $control->save();
+
+        $acciones_p = new AccionesP();
+        $acciones_p->idControlL   = $request->input('idControlL');
+        $acciones_p->acciones     = $request->input('acciones');
+        $acciones_p->idAccion     = $request->input('idAccion');
+        $acciones_p->save();
+
+        //dd($request);
         $request->session()->flash('mensaje', 'Control Creado Con exito');
         return redirect()->route('control.index');
 

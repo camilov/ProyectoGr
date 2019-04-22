@@ -17,7 +17,7 @@ class Control extends Model
     public $timestamps=false;
 
     protected $fillable = [
-        'idControlL','nombre','descripcion','acciones'
+        'idControlL','nombre','descripcion','acciones','idAccion'
     ];
 
     /**

@@ -4,10 +4,6 @@
    
     {!! Form::open(['route'=>['plan.update',$plan],'method'=>'PUT']) !!}
         
-        <div class="form-group">
-            {!! Form::label('accion','accion')!!}
-            {!! Form::textArea('accion',$plan->accion,['class'=>'form-control','placeholder'=>'Accion','required','style' => 'width:350px'])!!}
-        </div>
         
         <div class="form-group">
             {!! Form::label('responsable','responsable')!!}
