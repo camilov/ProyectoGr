@@ -7,7 +7,6 @@
             <th scope="col">Accion</th>
             <th scope="col">Responsable</th>
             <th scope="col">Duracion(Dias)</th>
-            <th scope="col">Criterio de exito </th>
             <th scope="col">Acciones</th>
         </thead>
         <tbody>
@@ -20,7 +19,6 @@
                     <td>{{$planes->accion}}</td>
                     <td>{{$planes->responsable}}</td>
                     <td>{{$planes->duracion}}</td>
-                    <td>{{$planes->criterio}}</td>
                     <td>
                     <a href="{{route('plan.edit',$planes->idPlan)}}" class="btn btn-warning glyphicon glyphicon-pencil"></a>
                     <a href="{{route('plan.destroy',$planes->idPlan)}}" onclick="return confirm('¿Seguro que deseas eliminar el plan?')" class="btn btn-danger glyphicon glyphicon-trash"></a>

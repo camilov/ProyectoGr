@@ -31,18 +31,7 @@
             {!! Form::text('responsable',null,['class'=>'form-control','required','style' => 'width:350px']) !!}
           </div>
 	
-		      <div class="form-group">
-            {!! Form::label('duracion','Duracion') !!}
-            {!! Form::text('duracion',null,['class'=>'form-control','required','style' => 'width:350px']) !!}
-          </div>
-
-          <div class="form-group">
-            {!! Form::label('criterio','Criterio de exito') !!}
-            {!! Form::text('criterio',null,['class'=>'form-control','required','style' => 'width:350px']) !!}
-          </div>
-          
-
-
+		    
           <div class="form-group">
                 {!! Form::submit('Registrar',['class'=>'btn btn-primary'])!!}
             

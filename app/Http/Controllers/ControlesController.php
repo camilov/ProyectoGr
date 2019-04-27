@@ -23,7 +23,8 @@ class ControlesController extends Controller
         $controles = DB::table('controles')->distinct()
                         ->join('control as c1','c1.idControlL','=','controles.idControlL')
                         ->join('control as c2','c2.idAccion','=','controles.idAccion')
-                        ->select('c1.nombre as nombre','c2.acciones as accion','controles.idRiesgo as idRiesgo','controles.idOpcionTratamiento as idOpcionTratamiento','controles.idControlL')
+                        ->join('acciones','acciones.idAccion','=','controles.idAccion')
+                        ->select('c1.nombre as nombre','c2.acciones as accion','acciones.duracion as duracion','controles.idRiesgo as idRiesgo','controles.idOpcionTratamiento as idOpcionTratamiento','controles.idControlL')
                         ->where('controles.idRiesgo','=',$idRiesgo)
                         
                         ->get();
@@ -72,6 +73,7 @@ class ControlesController extends Controller
         $acciones->accion          = $request->input('accion');
         $acciones->idAccion        = $request->input('idAccion');
         $acciones->idRiesgo        = $request->input('idRiesgo');
+        $acciones->duracion        = $request->input('duracion');
         $acciones->save();
 
         $controles = new Controles();   

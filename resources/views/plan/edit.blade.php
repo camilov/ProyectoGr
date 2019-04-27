@@ -14,12 +14,6 @@
             {!! Form::label('duracion','duracion')!!}
             {!! Form::text('duracion',$plan->duracion,['class'=>'form-control','placeholder'=>'Duracion','required','style' => 'width:350px'])!!}
         </div>
-        
-        <div class="form-group">
-            {!! Form::label('criterio','criterio de exito')!!}
-            {!! Form::text('criterio',$plan->criterio,['class'=>'form-control','placeholder'=>'Criterio','required','style' => 'width:350px'])!!}
-        </div>
-
 
         <div class="form-group">
             {!! Form::submit('Editar',['class'=>'btn btn-primary'])!!}

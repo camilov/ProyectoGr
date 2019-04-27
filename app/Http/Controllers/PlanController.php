@@ -39,7 +39,7 @@ class PlanController extends Controller
                     ->join('opcion_tratamiento','opcion_tratamiento.idOpcionTratamiento','=','plan.idOpcionTratamiento')
                     ->join('acciones as ac','ac.idRiesgo','=','plan.idRiesgo')
                     ->join('control','control.idControlL','=','plan.idControlL')
-                    ->select('r.nombre as riesgo','opcion_tratamiento.nombre as opcion','ac.accion as accion','responsable','duracion','criterio','idPlan','control.nombre','control.descripcion')
+                    ->select('r.nombre as riesgo','opcion_tratamiento.nombre as opcion','ac.accion as accion','responsable','ac.duracion as duracion','idPlan','control.nombre','control.descripcion')
                       ->where('plan.idRiesgo','=',$idRiesgo)
                       ->orderBy('idPlan','desc')
                       ->get();
@@ -114,8 +114,6 @@ class PlanController extends Controller
         $plan=Plan::findOrFail($id);
         $plan->accion =$request->accion;
         $plan->responsable =$request->responsable;
-        $plan->duracion =$request->duracion;
-        $plan->criterio =$request->criterio;
         $plan->save();
         session()->flash('messag',  'Plan Modificado.');
         return redirect()->route('plan.index');

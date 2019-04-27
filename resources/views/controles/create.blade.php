@@ -38,6 +38,11 @@
             <textarea name="idControlL" id="idControlL" class="form-control" style="display:none"></textarea>
           </div>
 
+          <div class="form-group">
+            {!! Form::label('duracion','Duracion') !!}
+            {!! Form::text('duracion',null,['class'=>'form-control','required','style' => 'width:350px']) !!}
+          </div>
+
 
           <div class="form-group">
             {!! Form::hidden('accion',null,['id'=>'accion','class'=>'form-control','required','style' => 'width:350px']) !!}
@@ -53,7 +58,7 @@
           </div>
 
           <div class="form-group">
-            <textarea name="idAccion" id="idAccion" class="form-control"></textarea>
+            <textarea name="idAccion" id="idAccion" class="form-control" style="display:none"></textarea>
           </div>
 
           <div class="form-group">
