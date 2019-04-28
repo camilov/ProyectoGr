@@ -67,13 +67,6 @@ class ControlController extends Controller
         $control->idAccion     = $request->input('idAccion');
         $control->save();
 
-        $acciones_p = new AccionesP();
-        $acciones_p->idControlL   = $request->input('idControlL');
-        $acciones_p->acciones     = $request->input('acciones');
-        $acciones_p->idAccion     = $request->input('idAccion');
-        $acciones_p->save();
-
-        //dd($request);
         $request->session()->flash('mensaje', 'Control Creado Con exito');
         return redirect()->route('control.index');
 

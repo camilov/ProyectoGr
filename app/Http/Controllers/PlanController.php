@@ -32,8 +32,6 @@ class PlanController extends Controller
 
     public function listar($idRiesgo){
 
-
-
         $plan = DB::table('plan')->distinct()
                     ->join('riesgo as r','r.idRiesgo', '=','plan.idRiesgo')
                     ->join('opcion_tratamiento','opcion_tratamiento.idOpcionTratamiento','=','plan.idOpcionTratamiento')
@@ -43,7 +41,8 @@ class PlanController extends Controller
                       ->where('plan.idRiesgo','=',$idRiesgo)
                       ->orderBy('idPlan','desc')
                       ->get();
-
+                      /**/
+        dd($plan);
         return view('plan.listar')->with('plan',$plan);
 
     }
@@ -73,8 +72,36 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
-        $plan = new Plan($request->all());
-        $plan->save();
+        $idRiesgo1            = $request->input('idRiesgo');
+        $idOpcionTratamiento1 = $request->input('idOpcionTratamiento');
+
+        $idControlL1 = DB::table('controles')->distinct()
+                             ->select('controles.idControlL')
+                             ->where([['controles.idRiesgo',            '=', $idRiesgo1],
+                                      ['controles.idOpcionTratamiento', '=', $idOpcionTratamiento1]
+                                    ])
+                             ->get();
+
+       $array = array();
+       foreach($idControlL1 as $t){
+
+            $array[] = $t->idControlL;
+
+        }
+
+        $longitud = count($array);
+
+        for($i=0; $i<$longitud; $i++)
+        {
+
+            $plan = new Plan();
+            $plan->idRiesgo            = $request->input('idRiesgo');
+            $plan->idOpcionTratamiento = $request->input('idOpcionTratamiento');
+            $plan->responsable         = $request->input('responsable');
+            $plan->idControlL          = $array[$i];
+            $plan->save();
+        }
+        
         $request->session()->flash('mensaje', 'Plan Creado Con exito');
         return redirect()->route('plan.index');
     }

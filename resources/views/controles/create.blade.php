@@ -39,7 +39,7 @@
           </div>
 
           <div class="form-group">
-            {!! Form::label('duracion','Duracion') !!}
+            {!! Form::label('duracion','Duracion(dias)') !!}
             {!! Form::text('duracion',null,['class'=>'form-control','required','style' => 'width:350px']) !!}
           </div>
 

@@ -7,7 +7,7 @@ use App\Controles;
 use App\Control;
 use App\Acciones;
 use DB;
-use App\Http\Requests\ControlesRequest;
+use App\Http\Requests\ControlesCreateRequest;
 
 
 class ControlesController extends Controller
@@ -65,7 +65,7 @@ class ControlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ControlesCreateRequest $request)
     {
         
         $acciones = new Acciones();

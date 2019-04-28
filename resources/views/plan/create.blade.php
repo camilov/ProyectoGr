@@ -19,7 +19,7 @@
           
 
           <div class="form-group">
-            <textarea name="idControlL" id="idControlL" class="form-control" >
+            <textarea name="idControlL" id="idControlL" class="form-control" style="display:none">
               @foreach($accion as $acciones)
                     {{$acciones->idControlL}}
                 @endforeach

@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'ProyectoGr'),
+    'name' => env('APP_NAME', 'Gestion de Riesgos'),
 
     /*
     |--------------------------------------------------------------------------
