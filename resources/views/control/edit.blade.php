@@ -4,6 +4,14 @@
    
     {!! Form::open(['route'=>['control.update',$control],'method'=>'PUT']) !!}
         
+    	<div class="form-group">
+            {!! Form::text('idControlL',$control->idControlL,['id'=>'idControlL','class'=>'form-control','required','style' => 'width:350px']) !!}
+        </div>
+
+        <div class="form-group">
+            {!! Form::text('idAccion',$control->idAccion,['id'=>'idAccion','class'=>'form-control','required','style' => 'width:350px']) !!}
+        </div>
+
         <div class="form-group">
             {!! Form::label('acciones','Acciones')!!}
             {!! Form::textArea('acciones',$control->acciones,['class'=>'form-control','required','style' => 'width:350px'])!!}
@@ -15,4 +23,12 @@
         </div>
     {!! Form::close() !!}
 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
+    <script>
+
+
+    	
+
+
+    </script>
 @endsection

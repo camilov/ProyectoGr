@@ -16,22 +16,24 @@
           </div>
 
           <div class="form-group">
-            {!! Form::label('objetivo','Objetivo')!!}
-            {!! Form::text('nombre',null,['id'=>'nombre','class'=>'form-control','placeholder'=>'nombre','required','style' => 'width:350px']) !!}
+            <textarea name="idAccion" id="idAccion" class="form-control" style="display:none" ></textarea>
           </div>
 
-		      <div class="form-group">
-            {!! Form::label('control','Control') !!}
-            {!! Form::textArea('descripcion',null,['id'=>'descripcion','class'=>'form-control','placeholder'=>'descripcion','required','style' => 'width:350px']) !!}
+          <div class="form-group">
+            {!! Form::label('objetivo','Objetivo')!!}
+            <textarea name="nombre" id="nombre" class="form-control" style="width:350px;height:35px"></textarea>
           </div>
+
+
+          <div class="form-group">
+            {!! Form::label('descripcion','Descripcion')!!}
+            <textarea name="descripcion" id="descripcion" class="form-control" style="width:350px;height:200px"></textarea>
+          </div>
+
           
           <div class="form-group">
             {!! Form::label('acciones','Acciones') !!}
             {!! Form::textArea('acciones',null,['class'=>'form-control','placeholder'=>'Acciones','style' => 'width:350px']) !!}
-          </div>
-
-          <div class="form-group">
-            <textarea name="idAccion" id="idAccion" class="form-control" style="display:none"></textarea>
           </div>
 
   
@@ -47,6 +49,8 @@
       $("#idControlL").change(function(){
           var valor = $(this).val();
           obtenerid(valor);
+          obtenerdatos(valor);
+          deshabilitarcampos();
       }); 
 
 
@@ -74,6 +78,34 @@
              // console.log(suma);
              var sum = id+'.'+suma;
               $("#idAccion").html(sum);
+          }
+        });
+
+     };
+
+
+     function obtenerdatos(valor,callback){
+
+        var id = valor;
+
+        $.ajax({
+          type:'GET',
+          url:'{{url('obtenerdatos')}}'+'/'+id,
+          beforeSend: function () {},
+          success: function(data){
+            var nombre = ' ';
+            var descripcion  = ' ';
+
+            for (var i=0; i<data.length;i++)
+              nombre      += data[i].nombre;
+              
+              $("#nombre").html(nombre);
+
+
+            for (var i=0; i<data.length;i++)
+              descripcion += data[i].descripcion;
+
+            $("#descripcion").html(descripcion);
           }
         });
 

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 
 use App\Activo;
 use App\User;
+use App\Objeto;
+use DB;
+
 
 class ActivoController extends Controller
 {
@@ -29,8 +32,11 @@ class ActivoController extends Controller
     public function create()
     {
         $user = User::select('name','id')->pluck('name','id');
+        $objeto = Objeto::select('nombre','idObjeto')->pluck('nombre','idObjeto');
 
-        return view('activo.create')->with('user',$user);
+
+
+        return view('activo.create')->with('user',$user)->with('objeto',$objeto);
     }
 
     /**
@@ -46,15 +52,35 @@ class ActivoController extends Controller
           $name = time().$file->getClientOriginalName();
           $file->move(public_path().'/images/',$name);  
        }
-        $activo = new Activo();
-        $activo->nombre = $request->input('nombre');
-        $activo->codigo = $request->input('codigo');
-        $activo->responsable = $request->input('responsable');
-        $activo->tipoActivo = $request->input('tipoActivo');
-        $activo->idUsuario = $request->input('id');
-        $activo->imagen = $name;
-        $activo->save();
-        $request->session()->flash('mensaje', 'Actvivo Creado Con exito');
+
+       $activo = new Activo();
+       
+       $objeto = DB::table('objeto')->distinct()
+                             ->select('objeto.nombre')
+                             ->where('idObjeto','=',$request->input('nombre'))
+                             ->get();
+
+       $array = array();
+       foreach($objeto as $t){
+
+            $array[] = $t->nombre;
+
+        }
+
+        $longitud = count($array);
+
+        for($i=0; $i<$longitud; $i++)
+        {
+            $activo->nombre = $array[$i];
+        }
+
+       $activo->codigo = $request->input('codigo');
+       $activo->responsable = $request->input('responsable');
+       $activo->tipoActivo = $request->input('tipoActivo');
+       $activo->idUsuario = $request->input('id');
+       $activo->imagen = $name;
+       $activo->save();
+       $request->session()->flash('mensaje', 'Actvivo Creado Con exito');
         return redirect()->route('activo.index');
     }
 

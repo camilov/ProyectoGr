@@ -43,6 +43,12 @@ class Activo extends Model
         return $this->hasMany('App\AnalisisRs');
     }
 
+
+    public function Objeto()
+    {
+        return $this->belongsTo('App\Objeto','idObjeto');
+    }
+
 }
 
 

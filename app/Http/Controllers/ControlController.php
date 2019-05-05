@@ -37,6 +37,11 @@ class ControlController extends Controller
         return Control::select('idAccion')->where('idControlL','=',$id)->get();
     }
 
+    public function obtenerdatos($id){
+
+        return Control::select('nombre','descripcion')->distinct()->where('idControlL','=',$id)->get();
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -45,8 +50,6 @@ class ControlController extends Controller
     public function create()
     {
         
-
-
         return view('control.create');
     }
 
@@ -93,6 +96,7 @@ class ControlController extends Controller
     public function edit($id)
     {
         $control = Control::findOrFail($id);
+
         return view('control.edit')->with('control',$control);
     }
 
@@ -105,7 +109,20 @@ class ControlController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $control=Control::findOrFail($id);
+        $texto= $request->idAccion;
+        $reemplazo = str_replace("'",'',$texto);
+
+        if($reemplazo = '"0"')
+        {
+            $control->idAccion = $request->idControlL.".1";
+        }
+        else
+        {
+            $control->idAccion = $request->idAccion;
+        }
+        
         $control->acciones =$request->acciones;
         $control->save();
         session()->flash('messag',  'Control Modificado.');

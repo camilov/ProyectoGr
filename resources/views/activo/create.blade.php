@@ -8,9 +8,11 @@
 
 	{!! Form::open(['route'=>'activo.store','method'=>'POST','files'=>true,'enctype'=>'multipart/form-data']) !!}
           
-          <div class="form-group" >
+          
+
+          <div class="form-group">
             {!! Form::label('nombre','Nombre') !!}
-            {!! Form::text('nombre',null,['class'=>'form-control','placeholder'=>'Nombre','required','style' => 'width:350px']) !!}
+            {!! Form::select('nombre',$objeto,null,['class'=>'form-control','placeholder'=>'Seleccione activo','required','style' => 'width:350px']) !!}
           </div>
 
           <div class="form-group">

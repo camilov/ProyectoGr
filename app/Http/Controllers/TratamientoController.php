@@ -7,6 +7,7 @@ use App\Tratamiento;
 use App\Riesgo;
 use App\opcionTratamiento;
 use App\Http\Requests\TratamientoRequest;
+use DB;
 
 
 
@@ -18,9 +19,15 @@ class TratamientoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($idOpcionTratamiento)
     {
-        $tratamiento = Tratamiento::orderBy('idTratamiento','ASC')->paginate(5);
+        $tratamiento = DB::table('tratamiento')
+                            ->join('riesgo','riesgo.idRiesgo','=','tratamiento.idRiesgo')
+                            ->join('opcion_tratamiento','opcion_tratamiento.idOpcionTratamiento','=','tratamiento.idOpcionTratamiento')
+                            ->select('riesgo.nombre as riesgo','opcion_tratamiento.nombre as opcion_tratamiento','tratamiento.idRiesgo','tratamiento.idOpcionTratamiento')
+                            ->where('tratamiento.idOpcionTratamiento','=',$idOpcionTratamiento)
+                            ->get();
+                            //ratamiento::orderBy('idTratamiento','ASC')->paginate(5);
         return view('tratamiento.index')->with('tratamiento',$tratamiento);
     }
 
@@ -43,9 +50,14 @@ class TratamientoController extends Controller
      */
     public function store(TratamientoRequest $request)
     {
-        $tratamiento = new Tratamiento($request->all());
+
+        $tratamiento = new Tratamiento();
+        $tratamiento->idOpcionTratamiento = $request->input('idOpcionTratamiento');
+        $tratamiento->idRiesgo            = $request->input('idRiesgo');
         $tratamiento->save();
-        return redirect()->route('tratamiento.index');
+
+        $idOpcionTratamiento = $request->input('idOpcionTratamiento');
+        return redirect()->route('tratamiento.index',[$idOpcionTratamiento]);
     }
 
     /**

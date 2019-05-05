@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Plan extends Model
+class Objeto extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,12 +12,12 @@ class Plan extends Model
      * @var array
      */
 
-    protected $table='plan';
-    protected $primaryKey='idPlan';
+    protected $table='objeto';
+    protected $primaryKey='idObjeto';
     public $timestamps=false;
 
     protected $fillable = [
-        'idRiesgo','idOpcionTratamiento','responsable'
+        'nombre'
     ];
 
     /**
@@ -28,14 +28,8 @@ class Plan extends Model
     protected $hidden = [
     ];
 
-    public function Riesgo()
-    {
-        return $this->belongsTo('App\Riesgo','idRiesgo');
-    }
+    public function Activo(){
 
-    public function Tratamiento()
-    {
-        return $this->belongsTo('App\Tratamiento','idOpcionTratamiento');
+        return $this->hasMany('App\Activo');
     }
-    
 }

@@ -9,6 +9,7 @@ use App\Plan;
 use App\Riesgo;
 use App\Tratamiento;
 use App\opcionTratamiento;
+use App\AccionesPlan;
 //use DB;
 
 
@@ -30,20 +31,28 @@ class PlanController extends Controller
         return view('plan.index')->with('riesgo',$riesgo);
     }
 
-    public function listar($idRiesgo){
+    public function listar($idRiesgo,$idOpcionTratamiento){
+
+        
 
         $plan = DB::table('plan')->distinct()
                     ->join('riesgo as r','r.idRiesgo', '=','plan.idRiesgo')
                     ->join('opcion_tratamiento','opcion_tratamiento.idOpcionTratamiento','=','plan.idOpcionTratamiento')
                     ->join('acciones as ac','ac.idRiesgo','=','plan.idRiesgo')
-                    ->join('control','control.idControlL','=','plan.idControlL')
-                    ->select('r.nombre as riesgo','opcion_tratamiento.nombre as opcion','ac.accion as accion','responsable','ac.duracion as duracion','idPlan','control.nombre','control.descripcion')
-                      ->where('plan.idRiesgo','=',$idRiesgo)
+                    ->join('control','control.idControlL','=','ac.idControlL')
+                    ->select('r.nombre as riesgo','opcion_tratamiento.nombre as opcion','ac.accion as accion','responsable','ac.duracion as duracion','plan.idPlan','control.nombre','control.descripcion')
+                      ->where([['plan.idRiesgo','=',$idRiesgo],['plan.idOpcionTratamiento','=',$idOpcionTratamiento],['ac.idOpcionTratamiento','=',$idOpcionTratamiento]])
                       ->orderBy('idPlan','desc')
                       ->get();
-                      /**/
-        dd($plan);
+
         return view('plan.listar')->with('plan',$plan);
+
+    }
+
+    public function obtenertratamiento($id){
+       
+
+        return  opcionTratamiento::select('nombre','idOpcionTratamiento')->get();
 
     }
     
@@ -57,7 +66,9 @@ class PlanController extends Controller
         
        $accion = DB::table('controles')->distinct()
                         ->select('controles.idControlL as idControlL')
-                        ->where('controles.idRiesgo','=',$idRiesgo)
+                        ->where([['controles.idRiesgo',            '=', $idRiesgo],
+                                      ['controles.idOpcionTratamiento', '=', $idOpcionTratamiento]
+                                    ])
                         ->get();
 
         return view('plan.create')->with('accion',$accion)->with('idRiesgo',$idRiesgo)->with('idOpcionTratamiento',$idOpcionTratamiento);
@@ -72,7 +83,7 @@ class PlanController extends Controller
      */
     public function store(Request $request)
     {
-        $idRiesgo1            = $request->input('idRiesgo');
+        /*$idRiesgo1            = $request->input('idRiesgo');
         $idOpcionTratamiento1 = $request->input('idOpcionTratamiento');
 
         $idControlL1 = DB::table('controles')->distinct()
@@ -92,15 +103,66 @@ class PlanController extends Controller
         $longitud = count($array);
 
         for($i=0; $i<$longitud; $i++)
-        {
+        {*/
 
             $plan = new Plan();
             $plan->idRiesgo            = $request->input('idRiesgo');
             $plan->idOpcionTratamiento = $request->input('idOpcionTratamiento');
             $plan->responsable         = $request->input('responsable');
-            $plan->idControlL          = $array[$i];
+           // $plan->idControlL          = $request->input('idControlL');
             $plan->save();
-        }
+
+            /*$idRiesgo1            = $request->input('idRiesgo');
+            $idOpcionTratamiento1 = $request->input('idOpcionTratamiento');
+
+            $idPlan = DB::table('plan')->distinct()
+                             ->select('plan.idPlan')
+                             ->where([['plan.idRiesgo',            '=', $idRiesgo1],
+                                      ['plan.idOpcionTratamiento', '=', $idOpcionTratamiento1]
+                                    ])
+                             ->get();
+
+            $array1 = array();
+
+            foreach($idPlan as $t1)
+            {
+                $array1[] = $t1->idPlan;
+            }
+
+            $longitud1 = count($array1);
+            
+
+            for($i=0; $i<$longitud1; $i++)
+            {
+                $idPlan1= $array1[$i];
+
+            }
+
+            $idControlL1 = DB::table('controles')->distinct()
+                             ->select('controles.idControlL')
+                             ->where([['controles.idRiesgo',            '=', $idRiesgo1],
+                                      ['controles.idOpcionTratamiento', '=', $idOpcionTratamiento1]
+                                    ])
+                             ->get();
+
+            $array = array();
+            foreach($idControlL1 as $t)
+            {
+                $array[] = $t->idControlL;
+            }
+
+            $longitud = count($array);
+
+            for($i=0; $i<$longitud; $i++)
+            {
+                $accionesPlan = new AccionesPlan();
+                $accionesPlan->idPlan      = $idPlan1;
+                $accionesPlan->idControlL  = $array[$i];
+                $accionesPlan->save();
+
+            }*/
+
+        /*}*/
         
         $request->session()->flash('mensaje', 'Plan Creado Con exito');
         return redirect()->route('plan.index');

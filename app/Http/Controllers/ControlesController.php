@@ -17,7 +17,7 @@ class ControlesController extends Controller
      * @return \Illuminate\Http\Response
      *
      */
-    public function index($idRiesgo)
+    public function index($idRiesgo,$idOpcionTratamiento)
     {
         
         $controles = DB::table('controles')->distinct()
@@ -25,7 +25,7 @@ class ControlesController extends Controller
                         ->join('control as c2','c2.idAccion','=','controles.idAccion')
                         ->join('acciones','acciones.idAccion','=','controles.idAccion')
                         ->select('c1.nombre as nombre','c2.acciones as accion','acciones.duracion as duracion','controles.idRiesgo as idRiesgo','controles.idOpcionTratamiento as idOpcionTratamiento','controles.idControlL')
-                        ->where('controles.idRiesgo','=',$idRiesgo)
+                        ->where([['controles.idRiesgo','=',$idRiesgo],['controles.idOpcionTratamiento','=',$idOpcionTratamiento]])
                         
                         ->get();
 
@@ -69,11 +69,12 @@ class ControlesController extends Controller
     {
         
         $acciones = new Acciones();
-        $acciones->idControlL      = $request->input('idControlL');
-        $acciones->accion          = $request->input('accion');
-        $acciones->idAccion        = $request->input('idAccion');
-        $acciones->idRiesgo        = $request->input('idRiesgo');
-        $acciones->duracion        = $request->input('duracion');
+        $acciones->idControlL                 = $request->input('idControlL');
+        $acciones->accion                     = $request->input('accion');
+        $acciones->idAccion                   = $request->input('idAccion');
+        $acciones->idRiesgo                   = $request->input('idRiesgo');
+        $acciones->idOpcionTratamiento        = $request->input('idOpcionTratamiento');
+        $acciones->duracion                   = $request->input('duracion');
         $acciones->save();
 
         $controles = new Controles();   
@@ -84,9 +85,10 @@ class ControlesController extends Controller
         $controles->idAccion            = $request->input('idAccion');
         $controles->save();
 
-        $idRiesgo = $request->input('idRiesgo');
+        $idRiesgo            = $request->input('idRiesgo');
+        $idOpcionTratamiento = $request->input('idOpcionTratamiento');
        // dd($request->input('idRiesgo'));
-        return redirect()->route('controles.index',[$idRiesgo]);
+        return redirect()->route('controles.index',[$idRiesgo,$idOpcionTratamiento]);
     }
 
     /**
