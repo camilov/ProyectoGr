@@ -5,11 +5,11 @@
     {!! Form::open(['route'=>['control.update',$control],'method'=>'PUT']) !!}
         
     	<div class="form-group">
-            {!! Form::text('idControlL',$control->idControlL,['id'=>'idControlL','class'=>'form-control','required','style' => 'width:350px']) !!}
+            {!! Form::hidden('idControlL',$control->idControlL,['id'=>'idControlL','class'=>'form-control','required','style' => 'width:350px']) !!}
         </div>
 
         <div class="form-group">
-            {!! Form::text('idAccion',$control->idAccion,['id'=>'idAccion','class'=>'form-control','required','style' => 'width:350px']) !!}
+            {!! Form::hidden('idAccion',$control->idAccion,['id'=>'idAccion','class'=>'form-control','required','style' => 'width:350px']) !!}
         </div>
 
         <div class="form-group">
